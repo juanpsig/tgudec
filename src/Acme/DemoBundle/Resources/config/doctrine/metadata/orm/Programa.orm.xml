@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Programa" table="programa">
+    <indexes>
+      <index name="Nomsede" columns="Nomsede"/>
+    </indexes>
+    <id name="idprog" type="integer" column="idprog">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nomprog" type="string" column="nomprog" length="50" nullable="false"/>
+    <field name="facultad" type="string" column="Facultad" length="50" nullable="false"/>
+    <many-to-one field="nomsede" target-entity="Sede">
+      <join-columns>
+        <join-column name="Nomsede" referenced-column-name="idsede"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

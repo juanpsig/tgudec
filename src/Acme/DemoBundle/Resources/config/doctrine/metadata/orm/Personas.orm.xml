@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Personas" table="personas">
+    <id name="idper" type="integer" column="idper">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="primernom" type="string" column="PrimerNom" length="25" nullable="false"/>
+    <field name="segunnom" type="string" column="SegunNom" length="25" nullable="true"/>
+    <field name="primerapell" type="string" column="PrimerApell" length="25" nullable="false"/>
+    <field name="segunapell" type="string" column="SegunApell" length="25" nullable="true"/>
+    <field name="cod" type="string" column="cod" length="27" nullable="true"/>
+    <field name="email" type="string" column="email" length="255" nullable="true"/>
+    <field name="telc" type="string" column="telc" length="10" nullable="true"/>
+    <field name="celu" type="string" column="celu" length="12" nullable="true"/>
+    <field name="tipodoc" type="string" column="tipodoc" length="2" nullable="true"/>
+    <field name="numdoc" type="string" column="numDoc" length="10" nullable="true"/>
+    <many-to-many field="idtgautor" target-entity="Trabgrado" mapped-by="idautor"/>
+    <many-to-many field="idasesortg" target-entity="Trabgrado" mapped-by="idasesor"/>
+  </entity>
+</doctrine-mapping>

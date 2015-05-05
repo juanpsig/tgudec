@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Archivostg" table="archivostg">
+    <id name="idarchiv" type="integer" column="IdArchiv">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="resumen" type="string" column="Resumen" length="250" nullable="true"/>
+    <field name="abstrc" type="string" column="Abstrc" length="250" nullable="true"/>
+    <field name="articulo" type="string" column="Articulo" length="250" nullable="true"/>
+    <field name="doc" type="string" column="Doc" length="250" nullable="false"/>
+    <field name="manualtecn" type="string" column="ManualTecn" length="250" nullable="true"/>
+    <field name="manualusr" type="string" column="ManualUsr" length="250" nullable="true"/>
+    <field name="codigosw" type="string" column="CodigoSW" length="250" nullable="true"/>
+    <field name="software" type="string" column="Software" length="250" nullable="true"/>
+  </entity>
+</doctrine-mapping>

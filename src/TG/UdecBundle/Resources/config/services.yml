@@ -1,0 +1,7 @@
+parameters:
+#    tg_udec.example.class: TG\UdecBundle\Example
+
+services:
+#    tg_udec.example:
+#        class: %tg_udec.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

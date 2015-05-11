@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Asesores" table="asesores">
+    <indexes>
+      <index name="FK_asesores_personas" columns="id_persona"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="director" type="string" column="director" length="1" nullable="true"/>
+    <field name="jurado" type="string" column="jurado" length="1" nullable="true"/>
+    <field name="asesmetd" type="string" column="asesmetd" length="1" nullable="true"/>
+    <field name="estado" type="string" column="estado" length="1" nullable="true"/>
+    <many-to-one field="idPersona" target-entity="Personas">
+      <join-columns>
+        <join-column name="id_persona" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

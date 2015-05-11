@@ -1,0 +1,16 @@
+{% extends 'TGUdecBundle::layout.html.twig' %}
+
+{% block contenido -%}
+    <header><h3>Editando Persona</h3></header>
+
+    {{ form(edit_form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('personas') }}">
+            Volver a la lista
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

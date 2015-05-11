@@ -38,7 +38,7 @@ class ChoiceFormField extends FormField
     /**
      * Returns true if the field should be included in the submitted values.
      *
-     * @return bool    true if the field should be included in the submitted values, false otherwise
+     * @return bool true if the field should be included in the submitted values, false otherwise
      */
     public function hasValue()
     {
@@ -51,7 +51,7 @@ class ChoiceFormField extends FormField
     }
 
     /**
-     * Check if the current selected option is disabled
+     * Check if the current selected option is disabled.
      *
      * @return bool
      */
@@ -188,7 +188,7 @@ class ChoiceFormField extends FormField
     /**
      * Returns true if the field accepts multiple values.
      *
-     * @return bool    true if the field accepts multiple values, false otherwise
+     * @return bool true if the field accepts multiple values, false otherwise
      */
     public function isMultiple()
     {
@@ -253,7 +253,7 @@ class ChoiceFormField extends FormField
     }
 
     /**
-     * Returns option value with associated disabled flag
+     * Returns option value with associated disabled flag.
      *
      * @param \DOMNode $node
      *
@@ -271,7 +271,7 @@ class ChoiceFormField extends FormField
     }
 
     /**
-     * Checks whether given value is in the existing options
+     * Checks whether given value is in the existing options.
      *
      * @param string $optionValue
      * @param array  $options
@@ -290,7 +290,7 @@ class ChoiceFormField extends FormField
     }
 
     /**
-     * Returns list of available field options
+     * Returns list of available field options.
      *
      * @return array
      */

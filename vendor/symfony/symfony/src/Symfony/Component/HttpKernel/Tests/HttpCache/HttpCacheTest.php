@@ -12,26 +12,13 @@
 namespace Symfony\Component\HttpKernel\Tests\HttpCache;
 
 use Symfony\Component\HttpKernel\HttpCache\HttpCache;
-use Symfony\Component\HttpKernel\HttpCache\StoreInterface;
-use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class HttpCacheTest extends HttpCacheTestCase
 {
-    protected function setUp()
-    {
-        if (!class_exists('Symfony\Component\HttpFoundation\Request')) {
-            $this->markTestSkipped('The "HttpFoundation" component is not available');
-        }
-    }
-
     public function testTerminateDelegatesTerminationOnlyForTerminableInterface()
     {
-        if (!class_exists('Symfony\Component\DependencyInjection\Container')) {
-            $this->markTestSkipped('The "DependencyInjection" component is not available');
-        }
-
         $storeMock = $this->getMockBuilder('Symfony\\Component\\HttpKernel\\HttpCache\\StoreInterface')
             ->disableOriginalConstructor()
             ->getMock();
@@ -606,7 +593,7 @@ class HttpCacheTest extends HttpCacheTestCase
         $this->assertTraceContains('miss');
         $this->assertTraceContains('store');
         $this->assertEquals('Hello World', $this->response->getContent());
-        $this->assertRegExp('/s-maxage=2/', $this->response->headers->get('Cache-Control'));
+        $this->assertRegExp('/s-maxage=(?:2|3)/', $this->response->headers->get('Cache-Control'));
 
         $this->request('GET', '/');
         $this->assertHttpKernelIsNotCalled();
@@ -1060,21 +1047,21 @@ class HttpCacheTest extends HttpCacheTestCase
     {
         $responses = array(
             array(
-                'status'  => 200,
-                'body'    => '<esi:include src="/foo" /> <esi:include src="/bar" />',
+                'status' => 200,
+                'body' => '<esi:include src="/foo" /> <esi:include src="/bar" />',
                 'headers' => array(
-                    'Cache-Control'     => 's-maxage=300',
+                    'Cache-Control' => 's-maxage=300',
                     'Surrogate-Control' => 'content="ESI/1.0"',
                 ),
             ),
             array(
-                'status'  => 200,
-                'body'    => 'Hello World!',
+                'status' => 200,
+                'body' => 'Hello World!',
                 'headers' => array('Cache-Control' => 's-maxage=300'),
             ),
             array(
-                'status'  => 200,
-                'body'    => 'My name is Bobby.',
+                'status' => 200,
+                'body' => 'My name is Bobby.',
                 'headers' => array('Cache-Control' => 's-maxage=100'),
             ),
         );
@@ -1082,7 +1069,7 @@ class HttpCacheTest extends HttpCacheTestCase
         $this->setNextResponses($responses);
 
         $this->request('GET', '/', array(), array(), true);
-        $this->assertEquals("Hello World! My name is Bobby.", $this->response->getContent());
+        $this->assertEquals('Hello World! My name is Bobby.', $this->response->getContent());
 
         // check for 100 or 99 as the test can be executed after a second change
         $this->assertTrue(in_array($this->response->getTtl(), array(99, 100)));
@@ -1092,21 +1079,21 @@ class HttpCacheTest extends HttpCacheTestCase
     {
         $responses = array(
             array(
-                'status'  => 200,
-                'body'    => '<esi:include src="/foo" /> <esi:include src="/bar" />',
+                'status' => 200,
+                'body' => '<esi:include src="/foo" /> <esi:include src="/bar" />',
                 'headers' => array(
-                    'Cache-Control'     => 's-maxage=300',
+                    'Cache-Control' => 's-maxage=300',
                     'Surrogate-Control' => 'content="ESI/1.0"',
                 ),
             ),
             array(
-                'status'  => 200,
-                'body'    => 'Hello World!',
+                'status' => 200,
+                'body' => 'Hello World!',
                 'headers' => array('ETag' => 'foobar'),
             ),
             array(
-                'status'  => 200,
-                'body'    => 'My name is Bobby.',
+                'status' => 200,
+                'body' => 'My name is Bobby.',
                 'headers' => array('Cache-Control' => 's-maxage=100'),
             ),
         );
@@ -1125,17 +1112,17 @@ class HttpCacheTest extends HttpCacheTestCase
     {
         $responses = array(
             array(
-                'status'  => 200,
-                'body'    => '<esi:include src="/foo" />',
+                'status' => 200,
+                'body' => '<esi:include src="/foo" />',
                 'headers' => array(
-                    'Content-Length'    => 26,
-                    'Cache-Control'     => 's-maxage=300',
+                    'Content-Length' => 26,
+                    'Cache-Control' => 's-maxage=300',
                     'Surrogate-Control' => 'content="ESI/1.0"',
                 ),
             ),
             array(
-                'status'  => 200,
-                'body'    => 'Hello World!',
+                'status' => 200,
+                'body' => 'Hello World!',
                 'headers' => array(),
             ),
         );
@@ -1153,6 +1140,28 @@ class HttpCacheTest extends HttpCacheTestCase
         $this->request('GET', '/', array('REMOTE_ADDR' => '10.0.0.1'));
 
         $this->assertEquals('127.0.0.1', $this->kernel->getBackendRequest()->server->get('REMOTE_ADDR'));
+    }
+
+    /**
+     * @dataProvider getTrustedProxyData
+     */
+    public function testHttpCacheIsSetAsATrustedProxy(array $existing, array $expected)
+    {
+        Request::setTrustedProxies($existing);
+
+        $this->setNextResponse();
+        $this->request('GET', '/', array('REMOTE_ADDR' => '10.0.0.1'));
+
+        $this->assertEquals($expected, Request::getTrustedProxies());
+    }
+
+    public function getTrustedProxyData()
+    {
+        return array(
+            array(array(), array('127.0.0.1')),
+            array(array('10.0.0.2'), array('10.0.0.2', '127.0.0.1')),
+            array(array('10.0.0.2', '127.0.0.1'), array('10.0.0.2', '127.0.0.1')),
+        );
     }
 
     /**
@@ -1190,12 +1199,12 @@ class HttpCacheTest extends HttpCacheTestCase
 
     public function testEsiCacheRemoveValidationHeadersIfEmbeddedResponses()
     {
-        $time = new \DateTime;
+        $time = new \DateTime();
 
         $responses = array(
             array(
-                'status'  => 200,
-                'body'    => '<esi:include src="/hey" />',
+                'status' => 200,
+                'body' => '<esi:include src="/hey" />',
                 'headers' => array(
                     'Surrogate-Control' => 'content="ESI/1.0"',
                     'ETag' => 'hey',
@@ -1203,8 +1212,8 @@ class HttpCacheTest extends HttpCacheTestCase
                 ),
             ),
             array(
-                'status'  => 200,
-                'body'    => 'Hey!',
+                'status' => 200,
+                'body' => 'Hey!',
                 'headers' => array(),
             ),
         );

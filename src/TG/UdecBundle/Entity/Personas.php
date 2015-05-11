@@ -15,229 +15,216 @@ class Personas
     /**
      * @var integer
      *
-     * @ORM\Column(name="idper", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idper;
+    private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="PrimerNom", type="string", length=25, nullable=false)
+     * @ORM\Column(name="primer_nombre", type="string", length=50, nullable=true)
      */
-    private $primernom;
+    private $primerNombre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="SegunNom", type="string", length=25, nullable=true)
+     * @ORM\Column(name="segundo_nombre", type="string", length=50, nullable=true)
      */
-    private $segunnom;
+    private $segundoNombre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="PrimerApell", type="string", length=25, nullable=false)
+     * @ORM\Column(name="primer_apellido", type="string", length=50, nullable=true)
      */
-    private $primerapell;
+    private $primerApellido;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="SegunApell", type="string", length=25, nullable=true)
+     * @ORM\Column(name="segundo_apellido", type="string", length=50, nullable=true)
      */
-    private $segunapell;
+    private $segundoApellido;
+    
+    private $nombre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="cod", type="string", length=27, nullable=true)
+     * @ORM\Column(name="codigo", type="string", length=27, nullable=true)
      */
-    private $cod;
+    private $codigo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     * @ORM\Column(name="email", type="string", length=250, nullable=true)
      */
     private $email;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="telc", type="string", length=10, nullable=true)
+     * @ORM\Column(name="telefono_fijo", type="string", length=15, nullable=true)
      */
-    private $telc;
+    private $telefonoFijo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="celu", type="string", length=12, nullable=true)
+     * @ORM\Column(name="movil", type="string", length=15, nullable=true)
      */
-    private $celu;
+    private $movil;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="tipodoc", type="string", length=2, nullable=true)
+     * @ORM\Column(name="tipo_doc", type="string", length=2, nullable=true)
      */
-    private $tipodoc;
+    private $tipoDoc;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="numDoc", type="string", length=10, nullable=true)
+     * @ORM\Column(name="numero_doc", type="string", length=10, nullable=true)
      */
-    private $numdoc;
+    private $numeroDoc;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var string
      *
-     * @ORM\ManyToMany(targetEntity="Trabgrado", mappedBy="idasesor")
+     * @ORM\Column(name="estado", type="string", length=1, nullable=true)
      */
-    private $idasesortg;
+    private $estado = '1';
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Trabgrado", mappedBy="idautor")
-     */
-    private $idtgautor;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->idasesortg = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->idtgautor = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
 
     /**
-     * Get idper
+     * Get id
      *
      * @return integer 
      */
-    public function getIdper()
+    public function getId()
     {
-        return $this->idper;
+        return $this->id;
     }
 
     /**
-     * Set primernom
+     * Set primerNombre
      *
-     * @param string $primernom
+     * @param string $primerNombre
      * @return Personas
      */
-    public function setPrimernom($primernom)
+    public function setPrimerNombre($primerNombre)
     {
-        $this->primernom = $primernom;
+        $this->primerNombre = $primerNombre;
 
         return $this;
     }
 
     /**
-     * Get primernom
+     * Get primerNombre
      *
      * @return string 
      */
-    public function getPrimernom()
+    public function getPrimerNombre()
     {
-        return $this->primernom;
+        return $this->primerNombre;
     }
 
     /**
-     * Set segunnom
+     * Set segundoNombre
      *
-     * @param string $segunnom
+     * @param string $segundoNombre
      * @return Personas
      */
-    public function setSegunnom($segunnom)
+    public function setSegundoNombre($segundoNombre)
     {
-        $this->segunnom = $segunnom;
+        $this->segundoNombre = $segundoNombre;
 
         return $this;
     }
 
     /**
-     * Get segunnom
+     * Get segundoNombre
      *
      * @return string 
      */
-    public function getSegunnom()
+    public function getSegundoNombre()
     {
-        return $this->segunnom;
+        return $this->segundoNombre;
     }
 
     /**
-     * Set primerapell
+     * Set primerApellido
      *
-     * @param string $primerapell
+     * @param string $primerApellido
      * @return Personas
      */
-    public function setPrimerapell($primerapell)
+    public function setPrimerApellido($primerApellido)
     {
-        $this->primerapell = $primerapell;
+        $this->primerApellido = $primerApellido;
 
         return $this;
     }
 
     /**
-     * Get primerapell
+     * Get primerApellido
      *
      * @return string 
      */
-    public function getPrimerapell()
+    public function getPrimerApellido()
     {
-        return $this->primerapell;
+        return $this->primerApellido;
     }
 
     /**
-     * Set segunapell
+     * Set segundoApellido
      *
-     * @param string $segunapell
+     * @param string $segundoApellido
      * @return Personas
      */
-    public function setSegunapell($segunapell)
+    public function setSegundoApellido($segundoApellido)
     {
-        $this->segunapell = $segunapell;
+        $this->segundoApellido = $segundoApellido;
 
         return $this;
     }
 
     /**
-     * Get segunapell
+     * Get segundoApellido
      *
      * @return string 
      */
-    public function getSegunapell()
+    public function getSegundoApellido()
     {
-        return $this->segunapell;
+        return $this->segundoApellido;
     }
 
     /**
-     * Set cod
+     * Set codigo
      *
-     * @param string $cod
+     * @param string $codigo
      * @return Personas
      */
-    public function setCod($cod)
+    public function setCodigo($codigo)
     {
-        $this->cod = $cod;
+        $this->codigo = $codigo;
 
         return $this;
     }
 
     /**
-     * Get cod
+     * Get codigo
      *
      * @return string 
      */
-    public function getCod()
+    public function getCodigo()
     {
-        return $this->cod;
+        return $this->codigo;
     }
 
     /**
@@ -264,160 +251,121 @@ class Personas
     }
 
     /**
-     * Set telc
+     * Set telefonoFijo
      *
-     * @param string $telc
+     * @param string $telefonoFijo
      * @return Personas
      */
-    public function setTelc($telc)
+    public function setTelefonoFijo($telefonoFijo)
     {
-        $this->telc = $telc;
+        $this->telefonoFijo = $telefonoFijo;
 
         return $this;
     }
 
     /**
-     * Get telc
+     * Get telefonoFijo
      *
      * @return string 
      */
-    public function getTelc()
+    public function getTelefonoFijo()
     {
-        return $this->telc;
+        return $this->telefonoFijo;
     }
 
     /**
-     * Set celu
+     * Set movil
      *
-     * @param string $celu
+     * @param string $movil
      * @return Personas
      */
-    public function setCelu($celu)
+    public function setMovil($movil)
     {
-        $this->celu = $celu;
+        $this->movil = $movil;
 
         return $this;
     }
 
     /**
-     * Get celu
+     * Get movil
      *
      * @return string 
      */
-    public function getCelu()
+    public function getMovil()
     {
-        return $this->celu;
+        return $this->movil;
     }
 
     /**
-     * Set tipodoc
+     * Set tipoDoc
      *
-     * @param string $tipodoc
+     * @param string $tipoDoc
      * @return Personas
      */
-    public function setTipodoc($tipodoc)
+    public function setTipoDoc($tipoDoc)
     {
-        $this->tipodoc = $tipodoc;
+        $this->tipoDoc = $tipoDoc;
 
         return $this;
     }
 
     /**
-     * Get tipodoc
+     * Get tipoDoc
      *
      * @return string 
      */
-    public function getTipodoc()
+    public function getTipoDoc()
     {
-        return $this->tipodoc;
+        return $this->tipoDoc;
     }
 
     /**
-     * Set numdoc
+     * Set numeroDoc
      *
-     * @param string $numdoc
+     * @param string $numeroDoc
      * @return Personas
      */
-    public function setNumdoc($numdoc)
+    public function setNumeroDoc($numeroDoc)
     {
-        $this->numdoc = $numdoc;
+        $this->numeroDoc = $numeroDoc;
 
         return $this;
     }
 
     /**
-     * Get numdoc
+     * Get numeroDoc
      *
      * @return string 
      */
-    public function getNumdoc()
+    public function getNumeroDoc()
     {
-        return $this->numdoc;
+        return $this->numeroDoc;
     }
 
     /**
-     * Add idasesortg
+     * Set estado
      *
-     * @param \Acme\DemoBundle\Entity\Trabgrado $idasesortg
+     * @param string $estado
      * @return Personas
      */
-    public function addIdasesortg(\Acme\DemoBundle\Entity\Trabgrado $idasesortg)
+    public function setEstado($estado)
     {
-        $this->idasesortg[] = $idasesortg;
+        $this->estado = $estado;
 
         return $this;
     }
 
     /**
-     * Remove idasesortg
+     * Get estado
      *
-     * @param \Acme\DemoBundle\Entity\Trabgrado $idasesortg
+     * @return string 
      */
-    public function removeIdasesortg(\Acme\DemoBundle\Entity\Trabgrado $idasesortg)
+    public function getEstado()
     {
-        $this->idasesortg->removeElement($idasesortg);
+        return $this->estado;
     }
-
-    /**
-     * Get idasesortg
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getIdasesortg()
-    {
-        return $this->idasesortg;
-    }
-
-    /**
-     * Add idtgautor
-     *
-     * @param \Acme\DemoBundle\Entity\Trabgrado $idtgautor
-     * @return Personas
-     */
-    public function addIdtgautor(\Acme\DemoBundle\Entity\Trabgrado $idtgautor)
-    {
-        $this->idtgautor[] = $idtgautor;
-
-        return $this;
-    }
-
-    /**
-     * Remove idtgautor
-     *
-     * @param \Acme\DemoBundle\Entity\Trabgrado $idtgautor
-     */
-    public function removeIdtgautor(\Acme\DemoBundle\Entity\Trabgrado $idtgautor)
-    {
-        $this->idtgautor->removeElement($idtgautor);
-    }
-
-    /**
-     * Get idtgautor
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getIdtgautor()
-    {
-        return $this->idtgautor;
+    
+    public function getNombre(){
+        return $this->primerNombre.' '.$this->segundoNombre.' '.$this->primerApellido.' '.$this->segundoApellido;
     }
 }

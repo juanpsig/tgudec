@@ -7,117 +7,123 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Trabgrado
  *
- * @ORM\Table(name="trabgrado", indexes={@ORM\Index(name="ClasificacionTG", columns={"ClasificacionTG"}), @ORM\Index(name="Programa", columns={"Programa"})})
+ * @ORM\Table(name="trabgrado", indexes={@ORM\Index(name="FK_trabgrado_programas", columns={"id_programa"}), @ORM\Index(name="FK_trabgrado_clasificaciontg", columns={"id_clasificacion"})})
  * @ORM\Entity
  */
 class Trabgrado
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_rg", type="datetime", nullable=true)
+     */
+    private $fechaRg;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="Titulo", type="string", length=250, nullable=false)
+     * @ORM\Column(name="titulo", type="string", length=250, nullable=true)
      */
     private $titulo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Concepto", type="string", length=50, nullable=false)
+     * @ORM\Column(name="concepto", type="string", length=50, nullable=true)
      */
     private $concepto;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="FechaGrad", type="date", nullable=false)
+     * @ORM\Column(name="fecha_grado", type="date", nullable=true)
      */
-    private $fechagrad;
+    private $fechaGrado;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="PalabrasClavs", type="string", length=250, nullable=true)
+     * @ORM\Column(name="palabras_clave", type="string", length=250, nullable=true)
      */
-    private $palabrasclavs;
+    private $palabrasClave;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="TipoTG", type="string", length=50, nullable=false)
+     * @ORM\Column(name="tipo_trabajo", type="string", length=50, nullable=true)
      */
-    private $tipotg;
+    private $tipoTrabajo;
 
     /**
-     * @var \Archivostg
+     * @var string
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Archivostg")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Idtg", referencedColumnName="IdArchiv")
-     * })
+     * @ORM\Column(name="estado", type="string", length=1, nullable=true)
      */
-    private $idtg;
+    private $estado = '1';
 
     /**
      * @var \Clasificaciontg
      *
      * @ORM\ManyToOne(targetEntity="Clasificaciontg")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="ClasificacionTG", referencedColumnName="IdClasfTG")
+     *   @ORM\JoinColumn(name="id_clasificacion", referencedColumnName="id")
      * })
      */
-    private $clasificaciontg;
+    private $idClasificacion;
 
     /**
-     * @var \Programa
+     * @var \Programas
      *
-     * @ORM\ManyToOne(targetEntity="Programa")
+     * @ORM\ManyToOne(targetEntity="Programas")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Programa", referencedColumnName="idprog")
+     *   @ORM\JoinColumn(name="id_programa", referencedColumnName="id")
      * })
      */
-    private $programa;
+    private $idPrograma;
+
+
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * Get id
      *
-     * @ORM\ManyToMany(targetEntity="Personas", inversedBy="idasesortg")
-     * @ORM\JoinTable(name="asesores",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="idasesortg", referencedColumnName="Idtg")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="IdAsesor", referencedColumnName="idper")
-     *   }
-     * )
+     * @return integer 
      */
-    private $idasesor;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Personas", inversedBy="idtgautor")
-     * @ORM\JoinTable(name="autores",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="idtgautor", referencedColumnName="Idtg")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="IdAutor", referencedColumnName="idper")
-     *   }
-     * )
-     */
-    private $idautor;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
+    public function getId()
     {
-        $this->idasesor = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->idautor = new \Doctrine\Common\Collections\ArrayCollection();
+        return $this->id;
     }
 
+    /**
+     * Set fechaRg
+     *
+     * @param \DateTime $fechaRg
+     * @return Trabgrado
+     */
+    public function setFechaRg($fechaRg)
+    {
+        $this->fechaRg = $fechaRg;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaRg
+     *
+     * @return \DateTime 
+     */
+    public function getFechaRg()
+    {
+        return $this->fechaRg;
+    }
 
     /**
      * Set titulo
@@ -166,206 +172,140 @@ class Trabgrado
     }
 
     /**
-     * Set fechagrad
+     * Set fechaGrado
      *
-     * @param \DateTime $fechagrad
+     * @param \DateTime $fechaGrado
      * @return Trabgrado
      */
-    public function setFechagrad($fechagrad)
+    public function setFechaGrado($fechaGrado)
     {
-        $this->fechagrad = $fechagrad;
+        $this->fechaGrado = $fechaGrado;
 
         return $this;
     }
 
     /**
-     * Get fechagrad
+     * Get fechaGrado
      *
      * @return \DateTime 
      */
-    public function getFechagrad()
+    public function getFechaGrado()
     {
-        return $this->fechagrad;
+        return $this->fechaGrado;
     }
 
     /**
-     * Set palabrasclavs
+     * Set palabrasClave
      *
-     * @param string $palabrasclavs
+     * @param string $palabrasClave
      * @return Trabgrado
      */
-    public function setPalabrasclavs($palabrasclavs)
+    public function setPalabrasClave($palabrasClave)
     {
-        $this->palabrasclavs = $palabrasclavs;
+        $this->palabrasClave = $palabrasClave;
 
         return $this;
     }
 
     /**
-     * Get palabrasclavs
+     * Get palabrasClave
      *
      * @return string 
      */
-    public function getPalabrasclavs()
+    public function getPalabrasClave()
     {
-        return $this->palabrasclavs;
+        return $this->palabrasClave;
     }
 
     /**
-     * Set tipotg
+     * Set tipoTrabajo
      *
-     * @param string $tipotg
+     * @param string $tipoTrabajo
      * @return Trabgrado
      */
-    public function setTipotg($tipotg)
+    public function setTipoTrabajo($tipoTrabajo)
     {
-        $this->tipotg = $tipotg;
+        $this->tipoTrabajo = $tipoTrabajo;
 
         return $this;
     }
 
     /**
-     * Get tipotg
+     * Get tipoTrabajo
      *
      * @return string 
      */
-    public function getTipotg()
+    public function getTipoTrabajo()
     {
-        return $this->tipotg;
+        return $this->tipoTrabajo;
     }
 
     /**
-     * Set idtg
+     * Set estado
      *
-     * @param \Acme\DemoBundle\Entity\Archivostg $idtg
+     * @param string $estado
      * @return Trabgrado
      */
-    public function setIdtg(\Acme\DemoBundle\Entity\Archivostg $idtg)
+    public function setEstado($estado)
     {
-        $this->idtg = $idtg;
+        $this->estado = $estado;
 
         return $this;
     }
 
     /**
-     * Get idtg
+     * Get estado
      *
-     * @return \Acme\DemoBundle\Entity\Archivostg 
+     * @return string 
      */
-    public function getIdtg()
+    public function getEstado()
     {
-        return $this->idtg;
+        return $this->estado;
     }
 
     /**
-     * Set clasificaciontg
+     * Set idClasificacion
      *
-     * @param \Acme\DemoBundle\Entity\Clasificaciontg $clasificaciontg
+     * @param \Acme\DemoBundle\Entity\Clasificaciontg $idClasificacion
      * @return Trabgrado
      */
-    public function setClasificaciontg(\Acme\DemoBundle\Entity\Clasificaciontg $clasificaciontg = null)
+    public function setIdClasificacion(\Acme\DemoBundle\Entity\Clasificaciontg $idClasificacion = null)
     {
-        $this->clasificaciontg = $clasificaciontg;
+        $this->idClasificacion = $idClasificacion;
 
         return $this;
     }
 
     /**
-     * Get clasificaciontg
+     * Get idClasificacion
      *
      * @return \Acme\DemoBundle\Entity\Clasificaciontg 
      */
-    public function getClasificaciontg()
+    public function getIdClasificacion()
     {
-        return $this->clasificaciontg;
+        return $this->idClasificacion;
     }
 
     /**
-     * Set programa
+     * Set idPrograma
      *
-     * @param \Acme\DemoBundle\Entity\Programa $programa
+     * @param \Acme\DemoBundle\Entity\Programas $idPrograma
      * @return Trabgrado
      */
-    public function setPrograma(\Acme\DemoBundle\Entity\Programa $programa = null)
+    public function setIdPrograma(\Acme\DemoBundle\Entity\Programas $idPrograma = null)
     {
-        $this->programa = $programa;
+        $this->idPrograma = $idPrograma;
 
         return $this;
     }
 
     /**
-     * Get programa
+     * Get idPrograma
      *
-     * @return \Acme\DemoBundle\Entity\Programa 
+     * @return \Acme\DemoBundle\Entity\Programas 
      */
-    public function getPrograma()
+    public function getIdPrograma()
     {
-        return $this->programa;
-    }
-
-    /**
-     * Add idasesor
-     *
-     * @param \Acme\DemoBundle\Entity\Personas $idasesor
-     * @return Trabgrado
-     */
-    public function addIdasesor(\Acme\DemoBundle\Entity\Personas $idasesor)
-    {
-        $this->idasesor[] = $idasesor;
-
-        return $this;
-    }
-
-    /**
-     * Remove idasesor
-     *
-     * @param \Acme\DemoBundle\Entity\Personas $idasesor
-     */
-    public function removeIdasesor(\Acme\DemoBundle\Entity\Personas $idasesor)
-    {
-        $this->idasesor->removeElement($idasesor);
-    }
-
-    /**
-     * Get idasesor
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getIdasesor()
-    {
-        return $this->idasesor;
-    }
-
-    /**
-     * Add idautor
-     *
-     * @param \Acme\DemoBundle\Entity\Personas $idautor
-     * @return Trabgrado
-     */
-    public function addIdautor(\Acme\DemoBundle\Entity\Personas $idautor)
-    {
-        $this->idautor[] = $idautor;
-
-        return $this;
-    }
-
-    /**
-     * Remove idautor
-     *
-     * @param \Acme\DemoBundle\Entity\Personas $idautor
-     */
-    public function removeIdautor(\Acme\DemoBundle\Entity\Personas $idautor)
-    {
-        $this->idautor->removeElement($idautor);
-    }
-
-    /**
-     * Get idautor
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getIdautor()
-    {
-        return $this->idautor;
+        return $this->idPrograma;
     }
 }

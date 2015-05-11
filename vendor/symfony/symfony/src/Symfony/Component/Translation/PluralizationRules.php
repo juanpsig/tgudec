@@ -24,16 +24,16 @@ class PluralizationRules
     /**
      * Returns the plural position to use for the given locale and number.
      *
-     * @param int     $number The number
-     * @param string  $locale The locale
+     * @param int    $number The number
+     * @param string $locale The locale
      *
-     * @return int     The plural position
+     * @return int The plural position
      */
     public static function get($number, $locale)
     {
-        if ("pt_BR" == $locale) {
+        if ('pt_BR' == $locale) {
             // temporary set a locale for brazilian
-            $locale = "xbr";
+            $locale = 'xbr';
         }
 
         if (strlen($locale) > 3) {
@@ -197,9 +197,9 @@ class PluralizationRules
      */
     public static function set($rule, $locale)
     {
-        if ("pt_BR" == $locale) {
+        if ('pt_BR' == $locale) {
             // temporary set a locale for brazilian
-            $locale = "xbr";
+            $locale = 'xbr';
         }
 
         if (strlen($locale) > 3) {

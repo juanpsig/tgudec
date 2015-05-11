@@ -14,9 +14,10 @@ namespace Symfony\Component\Config\Definition;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\Config\Definition\Exception\ForbiddenOverwriteException;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
+use Symfony\Component\Config\Definition\Exception\InvalidTypeException;
 
 /**
- * The base node class
+ * The base node class.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
@@ -138,7 +139,7 @@ abstract class BaseNode implements NodeInterface
     /**
      * Set this node as required.
      *
-     * @param bool    $boolean Required node
+     * @param bool $boolean Required node
      */
     public function setRequired($boolean)
     {
@@ -148,7 +149,7 @@ abstract class BaseNode implements NodeInterface
     /**
      * Sets if this node can be overridden.
      *
-     * @param bool    $allow
+     * @param bool $allow
      */
     public function setAllowOverwrite($allow)
     {
@@ -186,7 +187,7 @@ abstract class BaseNode implements NodeInterface
     }
 
     /**
-     * Returns the name of this node
+     * Returns the name of this node.
      *
      * @return string The Node's name.
      */
@@ -287,6 +288,7 @@ abstract class BaseNode implements NodeInterface
      *
      * @return mixed The finalized value
      *
+     * @throws Exception
      * @throws InvalidConfigurationException
      */
     final public function finalize($value)

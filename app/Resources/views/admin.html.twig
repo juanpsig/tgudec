@@ -83,15 +83,15 @@
 		</ul>
 		<h3>Personas</h3>
 		<ul class="toggle">
-			<li class="icn_add_user"><a href="#">Nueva Persona</a></li>
-			<li class="icn_view_users"><a href="#">Ver Personas</a></li>
+			<li class="icn_add_user"><a href="{{ path("personas_new") }}">Nueva Persona</a></li>
+			<li class="icn_view_users"><a href="{{ path("personas") }}">Ver Personas</a></li>
 			<!--<li class="icn_profile"><a href="#">Your Profile</a></li>-->
 		</ul>
 		<h3>Maestros</h3>
 		<ul class="toggle">
-			<li class="icn_folder"><a href="#">Sedes</a></li>
-			<li class="icn_folder"><a href="#">Clasificaciones</a></li>
-			<li class="icn_folder"><a href="#">Programas</a></li>
+			<li class="icn_folder"><a href="{{ path("sedes") }}">Sedes</a></li>
+			<li class="icn_folder"><a href="{{ path("clasificacion") }}">Clasificaciones</a></li>
+			<li class="icn_folder"><a href="{{ path("programas") }}">Programas</a></li>
 			<!--<li class="icn_video"><a href="#">Video</a></li>-->
 		</ul>
 		<!--<h3>Admin</h3>
@@ -110,11 +110,12 @@
 	
 	<section id="main" class="column">
 		{% block infoAlert %}
-		<h4 class="alert_info">Welcome to the free MediaLoot admin panel template, this could be an informative message.</h4>
+		<h4 class="alert_info">Bienvenid@, al sistema para la gestión de proyectos.</h4>
 		{% endblock %}
                 
-                {% block contenido %}
+                
 		<article class="module width_full">
+                    {% block contenido %}
 			<header><h3>Stats</h3></header>
 			<div class="module_content">
 				<article class="stats_graph">
@@ -139,8 +140,9 @@
 				</article>
 				<div class="clear"></div>
 			</div>
+                        {% endblock %}
 		</article><!-- end of stats article -->
-		{% endblock %}
+		
                 
                 
                 {% block contenido2 %}

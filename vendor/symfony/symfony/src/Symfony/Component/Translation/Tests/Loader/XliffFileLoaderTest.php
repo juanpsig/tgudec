@@ -16,13 +16,6 @@ use Symfony\Component\Config\Resource\FileResource;
 
 class XliffFileLoaderTest extends \PHPUnit_Framework_TestCase
 {
-    protected function setUp()
-    {
-        if (!class_exists('Symfony\Component\Config\Loader\Loader')) {
-            $this->markTestSkipped('The "Config" component is not available');
-        }
-    }
-
     public function testLoad()
     {
         $loader = new XliffFileLoader();
@@ -31,6 +24,22 @@ class XliffFileLoaderTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('en', $catalogue->getLocale());
         $this->assertEquals(array(new FileResource($resource)), $catalogue->getResources());
+        $this->assertSame(array(), libxml_get_errors());
+    }
+
+    public function testLoadWithInternalErrorsEnabled()
+    {
+        libxml_use_internal_errors(true);
+
+        $this->assertSame(array(), libxml_get_errors());
+
+        $loader = new XliffFileLoader();
+        $resource = __DIR__.'/../fixtures/resources.xlf';
+        $catalogue = $loader->load($resource, 'en', 'domain1');
+
+        $this->assertEquals('en', $catalogue->getLocale());
+        $this->assertEquals(array(new FileResource($resource)), $catalogue->getResources());
+        $this->assertSame(array(), libxml_get_errors());
     }
 
     public function testLoadWithResname()

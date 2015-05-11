@@ -1,0 +1,40 @@
+{% extends 'TGUdecBundle::layout.html.twig' %}
+
+{% block contenido -%}
+    <header><h3>Programa</h3></header>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ entity.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Facultad</th>
+                <td>{{ entity.facultad }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ entity.estado }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('programas') }}">
+            Volver a la lista
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('programas_edit', { 'id': entity.id }) }}">
+            Editar
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

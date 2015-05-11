@@ -1,0 +1,30 @@
+programas:
+    path:     /
+    defaults: { _controller: "TGUdecBundle:Programas:index" }
+
+programas_show:
+    path:     /{id}/show
+    defaults: { _controller: "TGUdecBundle:Programas:show" }
+
+programas_new:
+    path:     /new
+    defaults: { _controller: "TGUdecBundle:Programas:new" }
+
+programas_create:
+    path:     /create
+    defaults: { _controller: "TGUdecBundle:Programas:create" }
+    requirements: { _method: post }
+
+programas_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "TGUdecBundle:Programas:edit" }
+
+programas_update:
+    path:     /{id}/update
+    defaults: { _controller: "TGUdecBundle:Programas:update" }
+    requirements: { _method: post|put }
+
+programas_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "TGUdecBundle:Programas:delete" }
+    requirements: { _method: post|delete }

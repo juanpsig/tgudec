@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Sedes" table="sedes">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nombre" type="string" column="nombre" length="70" nullable="true"/>
+    <field name="tipoSede" type="string" column="tipo_sede" length="27" nullable="true"/>
+    <field name="municipio" type="string" column="municipio" length="27" nullable="true"/>
+    <field name="departamento" type="string" column="departamento" length="27" nullable="true"/>
+    <field name="estado" type="string" column="estado" length="1" nullable="true"/>
+  </entity>
+</doctrine-mapping>

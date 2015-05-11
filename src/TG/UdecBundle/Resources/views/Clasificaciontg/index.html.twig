@@ -1,0 +1,49 @@
+{% extends 'TGUdecBundle::layout.html.twig' %}
+
+{% block contenido -%}
+    <header><h3>Clasificación</h3></header>
+
+    <table class="tablesorter" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Electiva</th>
+                <th>Descripcion</th>
+                <th>Asesoria</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('clasificacion_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.nombre }}</td>
+                <td>{{ entity.electiva }}</td>
+                <td>{{ entity.descripcion }}</td>
+                <td>{{ entity.asesoria }}</td>
+                <td>{{ entity.estado }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('clasificacion_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('clasificacion_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('clasificacion_new') }}">
+                Crear una nueva persona
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

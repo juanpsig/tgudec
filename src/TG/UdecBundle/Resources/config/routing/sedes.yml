@@ -1,0 +1,30 @@
+sedes:
+    path:     /
+    defaults: { _controller: "TGUdecBundle:Sedes:index" }
+
+sedes_show:
+    path:     /{id}/show
+    defaults: { _controller: "TGUdecBundle:Sedes:show" }
+
+sedes_new:
+    path:     /new
+    defaults: { _controller: "TGUdecBundle:Sedes:new" }
+
+sedes_create:
+    path:     /create
+    defaults: { _controller: "TGUdecBundle:Sedes:create" }
+    requirements: { _method: post }
+
+sedes_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "TGUdecBundle:Sedes:edit" }
+
+sedes_update:
+    path:     /{id}/update
+    defaults: { _controller: "TGUdecBundle:Sedes:update" }
+    requirements: { _method: post|put }
+
+sedes_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "TGUdecBundle:Sedes:delete" }
+    requirements: { _method: post|delete }

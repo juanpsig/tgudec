@@ -1,0 +1,30 @@
+clasificacion:
+    path:     /
+    defaults: { _controller: "TGUdecBundle:Clasificaciontg:index" }
+
+clasificacion_show:
+    path:     /{id}/show
+    defaults: { _controller: "TGUdecBundle:Clasificaciontg:show" }
+
+clasificacion_new:
+    path:     /new
+    defaults: { _controller: "TGUdecBundle:Clasificaciontg:new" }
+
+clasificacion_create:
+    path:     /create
+    defaults: { _controller: "TGUdecBundle:Clasificaciontg:create" }
+    requirements: { _method: post }
+
+clasificacion_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "TGUdecBundle:Clasificaciontg:edit" }
+
+clasificacion_update:
+    path:     /{id}/update
+    defaults: { _controller: "TGUdecBundle:Clasificaciontg:update" }
+    requirements: { _method: post|put }
+
+clasificacion_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "TGUdecBundle:Clasificaciontg:delete" }
+    requirements: { _method: post|delete }

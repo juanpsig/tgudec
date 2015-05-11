@@ -23,13 +23,13 @@ use Symfony\Component\Form\Exception\TransformationFailedException;
  */
 class NumberToLocalizedStringTransformer implements DataTransformerInterface
 {
-    const ROUND_FLOOR    = \NumberFormatter::ROUND_FLOOR;
-    const ROUND_DOWN     = \NumberFormatter::ROUND_DOWN;
+    const ROUND_FLOOR = \NumberFormatter::ROUND_FLOOR;
+    const ROUND_DOWN = \NumberFormatter::ROUND_DOWN;
     const ROUND_HALFDOWN = \NumberFormatter::ROUND_HALFDOWN;
     const ROUND_HALFEVEN = \NumberFormatter::ROUND_HALFEVEN;
-    const ROUND_HALFUP   = \NumberFormatter::ROUND_HALFUP;
-    const ROUND_UP       = \NumberFormatter::ROUND_UP;
-    const ROUND_CEILING  = \NumberFormatter::ROUND_CEILING;
+    const ROUND_HALFUP = \NumberFormatter::ROUND_HALFUP;
+    const ROUND_UP = \NumberFormatter::ROUND_UP;
+    const ROUND_CEILING = \NumberFormatter::ROUND_CEILING;
 
     protected $precision;
 
@@ -55,7 +55,7 @@ class NumberToLocalizedStringTransformer implements DataTransformerInterface
     /**
      * Transforms a number type into localized number.
      *
-     * @param int|float     $value Number value.
+     * @param int|float $value Number value.
      *
      * @return string Localized value.
      *
@@ -86,11 +86,11 @@ class NumberToLocalizedStringTransformer implements DataTransformerInterface
     }
 
     /**
-     * Transforms a localized number into an integer or float
+     * Transforms a localized number into an integer or float.
      *
      * @param string $value The localized value
      *
-     * @return int|float     The numeric value
+     * @return int|float The numeric value
      *
      * @throws TransformationFailedException If the given value is not a string
      *                                       or if the value can not be transformed.
@@ -158,7 +158,7 @@ class NumberToLocalizedStringTransformer implements DataTransformerInterface
     }
 
     /**
-     * Returns a preconfigured \NumberFormatter instance
+     * Returns a preconfigured \NumberFormatter instance.
      *
      * @return \NumberFormatter
      */

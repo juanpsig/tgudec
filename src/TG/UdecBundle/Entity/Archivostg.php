@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Archivostg
  *
- * @ORM\Table(name="archivostg")
+ * @ORM\Table(name="archivostg", indexes={@ORM\Index(name="FK_archivostg_trabgrado", columns={"id_trabajo"})})
  * @ORM\Entity
  */
 class Archivostg
@@ -15,78 +15,95 @@ class Archivostg
     /**
      * @var integer
      *
-     * @ORM\Column(name="IdArchiv", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idarchiv;
+    private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Resumen", type="string", length=250, nullable=true)
+     * @ORM\Column(name="resumen", type="string", length=250, nullable=true)
      */
     private $resumen;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Abstrc", type="string", length=250, nullable=true)
+     * @ORM\Column(name="abstrc", type="string", length=250, nullable=true)
      */
     private $abstrc;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Articulo", type="string", length=250, nullable=true)
+     * @ORM\Column(name="articulo", type="string", length=250, nullable=true)
      */
     private $articulo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Doc", type="string", length=250, nullable=false)
+     * @ORM\Column(name="doc", type="string", length=250, nullable=true)
      */
     private $doc;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ManualTecn", type="string", length=250, nullable=true)
+     * @ORM\Column(name="manual_tecn", type="string", length=250, nullable=true)
      */
-    private $manualtecn;
+    private $manualTecn;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ManualUsr", type="string", length=250, nullable=true)
+     * @ORM\Column(name="manual_usr", type="string", length=250, nullable=true)
      */
-    private $manualusr;
+    private $manualUsr;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="CodigoSW", type="string", length=250, nullable=true)
+     * @ORM\Column(name="codigo_sw", type="string", length=250, nullable=true)
      */
-    private $codigosw;
+    private $codigoSw;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Software", type="string", length=250, nullable=true)
+     * @ORM\Column(name="software", type="string", length=250, nullable=true)
      */
     private $software;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="estado", type="string", length=1, nullable=true)
+     */
+    private $estado = '1';
+
+    /**
+     * @var \Trabgrado
+     *
+     * @ORM\ManyToOne(targetEntity="Trabgrado")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_trabajo", referencedColumnName="id")
+     * })
+     */
+    private $idTrabajo;
+
 
 
     /**
-     * Get idarchiv
+     * Get id
      *
      * @return integer 
      */
-    public function getIdarchiv()
+    public function getId()
     {
-        return $this->idarchiv;
+        return $this->id;
     }
 
     /**
@@ -182,72 +199,72 @@ class Archivostg
     }
 
     /**
-     * Set manualtecn
+     * Set manualTecn
      *
-     * @param string $manualtecn
+     * @param string $manualTecn
      * @return Archivostg
      */
-    public function setManualtecn($manualtecn)
+    public function setManualTecn($manualTecn)
     {
-        $this->manualtecn = $manualtecn;
+        $this->manualTecn = $manualTecn;
 
         return $this;
     }
 
     /**
-     * Get manualtecn
+     * Get manualTecn
      *
      * @return string 
      */
-    public function getManualtecn()
+    public function getManualTecn()
     {
-        return $this->manualtecn;
+        return $this->manualTecn;
     }
 
     /**
-     * Set manualusr
+     * Set manualUsr
      *
-     * @param string $manualusr
+     * @param string $manualUsr
      * @return Archivostg
      */
-    public function setManualusr($manualusr)
+    public function setManualUsr($manualUsr)
     {
-        $this->manualusr = $manualusr;
+        $this->manualUsr = $manualUsr;
 
         return $this;
     }
 
     /**
-     * Get manualusr
+     * Get manualUsr
      *
      * @return string 
      */
-    public function getManualusr()
+    public function getManualUsr()
     {
-        return $this->manualusr;
+        return $this->manualUsr;
     }
 
     /**
-     * Set codigosw
+     * Set codigoSw
      *
-     * @param string $codigosw
+     * @param string $codigoSw
      * @return Archivostg
      */
-    public function setCodigosw($codigosw)
+    public function setCodigoSw($codigoSw)
     {
-        $this->codigosw = $codigosw;
+        $this->codigoSw = $codigoSw;
 
         return $this;
     }
 
     /**
-     * Get codigosw
+     * Get codigoSw
      *
      * @return string 
      */
-    public function getCodigosw()
+    public function getCodigoSw()
     {
-        return $this->codigosw;
+        return $this->codigoSw;
     }
 
     /**
@@ -271,5 +288,51 @@ class Archivostg
     public function getSoftware()
     {
         return $this->software;
+    }
+
+    /**
+     * Set estado
+     *
+     * @param string $estado
+     * @return Archivostg
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return string 
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * Set idTrabajo
+     *
+     * @param \Acme\DemoBundle\Entity\Trabgrado $idTrabajo
+     * @return Archivostg
+     */
+    public function setIdTrabajo(\Acme\DemoBundle\Entity\Trabgrado $idTrabajo = null)
+    {
+        $this->idTrabajo = $idTrabajo;
+
+        return $this;
+    }
+
+    /**
+     * Get idTrabajo
+     *
+     * @return \Acme\DemoBundle\Entity\Trabgrado 
+     */
+    public function getIdTrabajo()
+    {
+        return $this->idTrabajo;
     }
 }

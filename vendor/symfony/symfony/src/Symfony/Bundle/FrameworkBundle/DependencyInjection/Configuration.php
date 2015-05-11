@@ -41,7 +41,7 @@ class Configuration implements ConfigurationInterface
                 ->end()
                 ->arrayNode('trusted_proxies')
                     ->beforeNormalization()
-                        ->ifTrue(function ($v) { return !is_array($v) && !is_null($v); })
+                        ->ifTrue(function ($v) { return !is_array($v) && null !== $v; })
                         ->then(function ($v) { return is_bool($v) ? array() : preg_split('/\s*,\s*/', $v); })
                     ->end()
                     ->prototype('scalar')
@@ -229,11 +229,11 @@ class Configuration implements ConfigurationInterface
         $organizeUrls = function ($urls) {
             $urls += array(
                 'http' => array(),
-                'ssl'  => array(),
+                'ssl' => array(),
             );
 
             foreach ($urls as $i => $url) {
-                if (is_integer($i)) {
+                if (is_int($i)) {
                     if (0 === strpos($url, 'https://') || 0 === strpos($url, '//')) {
                         $urls['http'][] = $urls['ssl'][] = $url;
                     } else {
@@ -364,8 +364,13 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('translator')
                     ->info('translator configuration')
                     ->canBeEnabled()
+                    ->fixXmlConfig('fallback')
                     ->children()
-                        ->scalarNode('fallback')->defaultValue('en')->end()
+                        ->arrayNode('fallbacks')
+                            ->beforeNormalization()->ifString()->then(function ($v) { return array($v); })->end()
+                            ->prototype('scalar')->end()
+                            ->defaultValue(array('en'))
+                        ->end()
                     ->end()
                 ->end()
             ->end()

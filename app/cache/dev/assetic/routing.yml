@@ -1,5 +1,0 @@
-_assetic:
-    resource: .
-    type: assetic
-_app:
-    resource: 'C:/srvweb/Apache2/htdocs/tgudec/app/config/routing_dev.yml'

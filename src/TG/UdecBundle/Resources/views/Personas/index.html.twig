@@ -1,0 +1,56 @@
+{% extends 'TGUdecBundle::layout.html.twig' %}
+
+{% block contenido -%}
+    <header><h3>Personas</h3></header>
+
+    <table class="tablesorter" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                
+                <th>Codigo</th>
+                <th>Email</th>
+                <th>Telefonofijo</th>
+                <th>Movil</th>
+                <th>Tipodoc</th>
+                <th>Numerodoc</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('personas_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.nombre }}</td>
+                <td>{{ entity.codigo }}</td>
+                <td>{{ entity.email }}</td>
+                <td>{{ entity.telefonoFijo }}</td>
+                <td>{{ entity.movil }}</td>
+                <td>{{ entity.tipoDoc }}</td>
+                <td>{{ entity.numeroDoc }}</td>
+                <td>{{ entity.estado }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('personas_show', { 'id': entity.id }) }}">ver</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('personas_edit', { 'id': entity.id }) }}">editar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('personas_new') }}">
+                Crear una nueva persona
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

@@ -2,49 +2,28 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="Trabgrado" table="trabgrado">
     <indexes>
-      <index name="ClasificacionTG" columns="ClasificacionTG"/>
-      <index name="Programa" columns="Programa"/>
+      <index name="FK_trabgrado_programas" columns="id_programa"/>
+      <index name="FK_trabgrado_clasificaciontg" columns="id_clasificacion"/>
     </indexes>
-    <id name="idtg" association-key="true"/>
-    <field name="titulo" type="string" column="Titulo" length="250" nullable="false"/>
-    <field name="concepto" type="string" column="Concepto" length="50" nullable="false"/>
-    <field name="fechagrad" type="date" column="FechaGrad" nullable="false"/>
-    <field name="palabrasclavs" type="string" column="PalabrasClavs" length="250" nullable="true"/>
-    <field name="tipotg" type="string" column="TipoTG" length="50" nullable="false"/>
-    <one-to-one field="idtg" target-entity="Archivostg">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="fechaRg" type="datetime" column="fecha_rg" nullable="true"/>
+    <field name="titulo" type="string" column="titulo" length="250" nullable="true"/>
+    <field name="concepto" type="string" column="concepto" length="50" nullable="true"/>
+    <field name="fechaGrado" type="date" column="fecha_grado" nullable="true"/>
+    <field name="palabrasClave" type="string" column="palabras_clave" length="250" nullable="true"/>
+    <field name="tipoTrabajo" type="string" column="tipo_trabajo" length="50" nullable="true"/>
+    <field name="estado" type="string" column="estado" length="1" nullable="true"/>
+    <many-to-one field="idPrograma" target-entity="Programas">
       <join-columns>
-        <join-column name="Idtg" referenced-column-name="IdArchiv"/>
-      </join-columns>
-    </one-to-one>
-    <many-to-one field="programa" target-entity="Programa">
-      <join-columns>
-        <join-column name="Programa" referenced-column-name="idprog"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="clasificaciontg" target-entity="Clasificaciontg">
-      <join-columns>
-        <join-column name="ClasificacionTG" referenced-column-name="IdClasfTG"/>
+        <join-column name="id_programa" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-many field="idautor" target-entity="Personas" inversed-by="idtgautor">
-      <join-table name="autores">
-        <join-columns>
-          <join-column name="idtgautor" referenced-column-name="Idtg"/>
-        </join-columns>
-        <inverse-join-columns>
-          <join-column name="IdAutor" referenced-column-name="idper"/>
-        </inverse-join-columns>
-      </join-table>
-    </many-to-many>
-    <many-to-many field="idasesor" target-entity="Personas" inversed-by="idasesortg">
-      <join-table name="asesores">
-        <join-columns>
-          <join-column name="idasesortg" referenced-column-name="Idtg"/>
-        </join-columns>
-        <inverse-join-columns>
-          <join-column name="IdAsesor" referenced-column-name="idper"/>
-        </inverse-join-columns>
-      </join-table>
-    </many-to-many>
+    <many-to-one field="idClasificacion" target-entity="Clasificaciontg">
+      <join-columns>
+        <join-column name="id_clasificacion" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
   </entity>
 </doctrine-mapping>

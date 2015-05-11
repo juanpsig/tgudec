@@ -16,16 +16,9 @@ use Symfony\Component\Form\Extension\Core\EventListener\TrimListener;
 
 class TrimListenerTest extends \PHPUnit_Framework_TestCase
 {
-    protected function setUp()
-    {
-        if (!class_exists('Symfony\Component\EventDispatcher\EventDispatcher')) {
-            $this->markTestSkipped('The "EventDispatcher" component is not available');
-        }
-    }
-
     public function testTrim()
     {
-        $data = " Foo! ";
+        $data = ' Foo! ';
         $form = $this->getMock('Symfony\Component\Form\Test\FormInterface');
         $event = new FormEvent($form, $data);
 
@@ -65,7 +58,7 @@ class TrimListenerTest extends \PHPUnit_Framework_TestCase
         $symbol = mb_convert_encoding($binary, 'UTF-8', 'UCS-2BE');
         $symbol = $symbol."ab\ncd".$symbol;
 
-        $form  = $this->getMock('Symfony\Component\Form\Test\FormInterface');
+        $form = $this->getMock('Symfony\Component\Form\Test\FormInterface');
         $event = new FormEvent($form, $symbol);
 
         $filter = new TrimListener();

@@ -151,7 +151,7 @@ class ProcessPipes
     /**
      * Reads data in file handles and pipes.
      *
-     * @param bool    $blocking Whether to use blocking calls or not.
+     * @param bool $blocking Whether to use blocking calls or not.
      *
      * @return array An array of read data indexed by their fd.
      */
@@ -163,7 +163,7 @@ class ProcessPipes
     /**
      * Reads data in file handles and pipes, closes them if EOF is reached.
      *
-     * @param bool    $blocking Whether to use blocking calls or not.
+     * @param bool $blocking Whether to use blocking calls or not.
      *
      * @return array An array of read data indexed by their fd.
      */
@@ -240,7 +240,7 @@ class ProcessPipes
     /**
      * Reads data in file handles.
      *
-     * @param bool    $close Whether to close file handles or not.
+     * @param bool $close Whether to close file handles or not.
      *
      * @return array An array of read data indexed by their fd.
      */
@@ -276,14 +276,16 @@ class ProcessPipes
     /**
      * Reads data in file pipes streams.
      *
-     * @param bool    $blocking Whether to use blocking calls or not.
-     * @param bool    $close    Whether to close file handles or not.
+     * @param bool $blocking Whether to use blocking calls or not.
+     * @param bool $close    Whether to close file handles or not.
      *
      * @return array An array of read data indexed by their fd.
      */
     private function readStreams($blocking, $close = false)
     {
         if (empty($this->pipes)) {
+            usleep(Process::TIMEOUT_PRECISION * 1E4);
+
             return array();
         }
 
@@ -313,11 +315,11 @@ class ProcessPipes
             $type = array_search($pipe, $this->pipes);
 
             $data = '';
-            while ($dataread = fread($pipe, self::CHUNK_SIZE)) {
+            while ('' !== $dataread = (string) fread($pipe, self::CHUNK_SIZE)) {
                 $data .= $dataread;
             }
 
-            if ($data) {
+            if ('' !== $data) {
                 $read[$type] = $data;
             }
 
@@ -344,7 +346,7 @@ class ProcessPipes
     }
 
     /**
-     * Removes temporary files
+     * Removes temporary files.
      */
     private function removeFiles()
     {

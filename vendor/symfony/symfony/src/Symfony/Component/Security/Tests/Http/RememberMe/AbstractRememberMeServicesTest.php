@@ -17,13 +17,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AbstractRememberMeServicesTest extends \PHPUnit_Framework_TestCase
 {
-    protected function setUp()
-    {
-        if (!class_exists('Symfony\Component\HttpFoundation\Request')) {
-            $this->markTestSkipped('The "HttpFoundation" component is not available');
-        }
-    }
-
     public function testGetRememberMeParameter()
     {
         $service = $this->getService(null, array('remember_me_parameter' => 'foo'));
@@ -250,7 +243,7 @@ class AbstractRememberMeServicesTest extends \PHPUnit_Framework_TestCase
         }
 
         return $this->getMockForAbstractClass('Symfony\Component\Security\Http\RememberMe\AbstractRememberMeServices', array(
-            array($userProvider), 'fookey', 'fookey', $options, $logger
+            array($userProvider), 'fookey', 'fookey', $options, $logger,
         ));
     }
 

@@ -15,96 +15,103 @@ class Clasificaciontg
     /**
      * @var integer
      *
-     * @ORM\Column(name="IdClasfTG", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idclasftg;
+    private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="NomClasfTG", type="string", length=50, nullable=false)
+     * @ORM\Column(name="nombre", type="string", length=50, nullable=true)
      */
-    private $nomclasftg;
+    private $nombre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ElectivaTG", type="string", length=50, nullable=true)
+     * @ORM\Column(name="electiva", type="string", length=50, nullable=true)
      */
-    private $electivatg;
+    private $electiva;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Descripcion", type="string", length=250, nullable=true)
+     * @ORM\Column(name="descripcion", type="string", length=250, nullable=true)
      */
     private $descripcion;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Asesoria", type="string", length=50, nullable=true)
+     * @ORM\Column(name="asesoria", type="string", length=50, nullable=true)
      */
     private $asesoria;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="estado", type="string", length=1, nullable=true)
+     */
+    private $estado = '1';
+
 
 
     /**
-     * Get idclasftg
+     * Get id
      *
      * @return integer 
      */
-    public function getIdclasftg()
+    public function getId()
     {
-        return $this->idclasftg;
+        return $this->id;
     }
 
     /**
-     * Set nomclasftg
+     * Set nombre
      *
-     * @param string $nomclasftg
+     * @param string $nombre
      * @return Clasificaciontg
      */
-    public function setNomclasftg($nomclasftg)
+    public function setNombre($nombre)
     {
-        $this->nomclasftg = $nomclasftg;
+        $this->nombre = $nombre;
 
         return $this;
     }
 
     /**
-     * Get nomclasftg
+     * Get nombre
      *
      * @return string 
      */
-    public function getNomclasftg()
+    public function getNombre()
     {
-        return $this->nomclasftg;
+        return $this->nombre;
     }
 
     /**
-     * Set electivatg
+     * Set electiva
      *
-     * @param string $electivatg
+     * @param string $electiva
      * @return Clasificaciontg
      */
-    public function setElectivatg($electivatg)
+    public function setElectiva($electiva)
     {
-        $this->electivatg = $electivatg;
+        $this->electiva = $electiva;
 
         return $this;
     }
 
     /**
-     * Get electivatg
+     * Get electiva
      *
      * @return string 
      */
-    public function getElectivatg()
+    public function getElectiva()
     {
-        return $this->electivatg;
+        return $this->electiva;
     }
 
     /**
@@ -151,5 +158,28 @@ class Clasificaciontg
     public function getAsesoria()
     {
         return $this->asesoria;
+    }
+
+    /**
+     * Set estado
+     *
+     * @param string $estado
+     * @return Clasificaciontg
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return string 
+     */
+    public function getEstado()
+    {
+        return $this->estado;
     }
 }

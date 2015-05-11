@@ -1,0 +1,15 @@
+{% extends 'TGUdecBundle::layout.html.twig' %}
+
+{% block contenido -%}
+    <header><h3>Nueva Clasificación</h3></header>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('clasificacion') }}">
+            Volver a la lista
+        </a>
+    </li>
+</ul>
+{% endblock %}

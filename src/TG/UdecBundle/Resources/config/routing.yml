@@ -1,5 +1,5 @@
 tg_udec_homepage:
-    pattern:  /hello/{name}
+    pattern:  /
     defaults: { _controller: TGUdecBundle:Default:index }
 tg_udec_personas:
     resource: "@TGUdecBundle/Resources/config/routing/personas.yml"
@@ -13,3 +13,6 @@ tg_udec_programas:
 tg_udec_clasificacion:
     resource: "@TGUdecBundle/Resources/config/routing/clasificaciontg.yml"
     prefix:   /clasificacion
+tg_udec_trabgrado:
+    resource: "@TGUdecBundle/Resources/config/routing/trabgrado.yml"
+    prefix:   /trabgrado

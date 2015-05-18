@@ -1,0 +1,51 @@
+{% extends 'TGUdecBundle::layout.html.twig' %}
+
+{% block contenido -%}
+    <header><h3>Trabajos de Grado</h3></header>
+
+    <table class="tablesorter" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Registro</th>
+                <th>Titulo</th>
+                <th>Concepto</th>
+                <th>F. Grado</th>
+                <th>Tipo</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('trabgrado_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{% if entity.fechaRg %}{{ entity.fechaRg|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.titulo }}</td>
+                <td>{{ entity.concepto }}</td>
+                <td>{% if entity.fechaGrado %}{{ entity.fechaGrado|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.tipoTrabajo }}</td>
+                <td>{{ entity.estado }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('trabgrado_show', { 'id': entity.id }) }}">ver</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('trabgrado_edit', { 'id': entity.id }) }}">editar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('trabgrado_new') }}">
+                Crear un nuevo trabajo
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

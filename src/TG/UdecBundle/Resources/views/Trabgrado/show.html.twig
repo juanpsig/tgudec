@@ -1,0 +1,56 @@
+{% extends 'TGUdecBundle::layout.html.twig' %}
+
+{% block contenido -%}
+    <header><h3>Trabajo de Grado</h3></header>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Fecharg</th>
+                <td>{{ entity.fechaRg|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Titulo</th>
+                <td>{{ entity.titulo }}</td>
+            </tr>
+            <tr>
+                <th>Concepto</th>
+                <td>{{ entity.concepto }}</td>
+            </tr>
+            <tr>
+                <th>Fechagrado</th>
+                <td>{{ entity.fechaGrado|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Palabrasclave</th>
+                <td>{{ entity.palabrasClave }}</td>
+            </tr>
+            <tr>
+                <th>Tipotrabajo</th>
+                <td>{{ entity.tipoTrabajo }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ entity.estado }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('trabgrado') }}">
+            Volver a la lista
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('trabgrado_edit', { 'id': entity.id }) }}">
+            Editar
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

@@ -335,4 +335,8 @@ class Archivostg
     {
         return $this->idTrabajo;
     }
+    
+    public function __toString(){
+        return $this->getDoc();
+    }
 }

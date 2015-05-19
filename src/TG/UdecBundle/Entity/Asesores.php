@@ -166,10 +166,10 @@ class Asesores
     /**
      * Set idPersona
      *
-     * @param \Acme\DemoBundle\Entity\Personas $idPersona
+     * @param \TG\UdecBundle\Entity\Personas $idPersona
      * @return Asesores
      */
-    public function setIdPersona(\Acme\DemoBundle\Entity\Personas $idPersona = null)
+    public function setIdPersona(\TG\UdecBundle\Entity\Personas $idPersona = null)
     {
         $this->idPersona = $idPersona;
 
@@ -179,7 +179,7 @@ class Asesores
     /**
      * Get idPersona
      *
-     * @return \Acme\DemoBundle\Entity\Personas 
+     * @return \TG\UdecBundle\Entity\Personas 
      */
     public function getIdPersona()
     {

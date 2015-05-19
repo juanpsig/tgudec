@@ -136,10 +136,10 @@ class Programas
     /**
      * Set idSede
      *
-     * @param \Acme\DemoBundle\Entity\Sedes $idSede
+     * @param \TG\UdecBundle\Entity\Sedes $idSede
      * @return Programas
      */
-    public function setIdSede(\Acme\DemoBundle\Entity\Sedes $idSede = null)
+    public function setIdSede(\TG\UdecBundle\Entity\Sedes $idSede = null)
     {
         $this->idSede = $idSede;
 
@@ -149,10 +149,14 @@ class Programas
     /**
      * Get idSede
      *
-     * @return \Acme\DemoBundle\Entity\Sedes 
+     * @return \TG\UdecBundle\Entity\Sedes 
      */
     public function getIdSede()
     {
         return $this->idSede;
+    }
+    
+    public function __toString(){
+        return $this->getNombre();
     }
 }

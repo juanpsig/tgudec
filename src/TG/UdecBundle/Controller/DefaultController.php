@@ -10,11 +10,18 @@ use JMS\Serializer\SerializerBuilder;
 class DefaultController extends Controller
 {
     public function indexAction(){
-        $serializer = SerializerBuilder::create()->build();
+        /*$serializer = SerializerBuilder::create()->build();
         $data['mensaje']='success';
         $jsonContent = $serializer->serialize($data, 'json');
         //return new Response($jsonContent);
-        return $this->render('TGUdecBundle:Default:index.html.twig');
+        return $this->render('TGUdecBundle:Default:index.html.twig');*/
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('TGUdecBundle:Trabgrado')->findAll();
+
+        return $this->render('TGUdecBundle:Trabgrado:index.html.twig', array(
+            'entities' => $entities,
+        ));
     }
     
     

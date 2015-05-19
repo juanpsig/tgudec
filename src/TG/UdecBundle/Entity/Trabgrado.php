@@ -266,10 +266,10 @@ class Trabgrado
     /**
      * Set idClasificacion
      *
-     * @param \Acme\DemoBundle\Entity\Clasificaciontg $idClasificacion
+     * @param \TG\UdecBundle\Entity\Clasificaciontg $idClasificacion
      * @return Trabgrado
      */
-    public function setIdClasificacion(\Acme\DemoBundle\Entity\Clasificaciontg $idClasificacion = null)
+    public function setIdClasificacion(\TG\UdecBundle\Entity\Clasificaciontg $idClasificacion = null)
     {
         $this->idClasificacion = $idClasificacion;
 
@@ -279,7 +279,7 @@ class Trabgrado
     /**
      * Get idClasificacion
      *
-     * @return \Acme\DemoBundle\Entity\Clasificaciontg 
+     * @return \TG\UdecBundle\Entity\Clasificaciontg 
      */
     public function getIdClasificacion()
     {
@@ -289,10 +289,10 @@ class Trabgrado
     /**
      * Set idPrograma
      *
-     * @param \Acme\DemoBundle\Entity\Programas $idPrograma
+     * @param \TG\UdecBundle\Entity\Programas $idPrograma
      * @return Trabgrado
      */
-    public function setIdPrograma(\Acme\DemoBundle\Entity\Programas $idPrograma = null)
+    public function setIdPrograma(\TG\UdecBundle\Entity\Programas $idPrograma = null)
     {
         $this->idPrograma = $idPrograma;
 
@@ -302,10 +302,11 @@ class Trabgrado
     /**
      * Get idPrograma
      *
-     * @return \Acme\DemoBundle\Entity\Programas 
+     * @return \TG\UdecBundle\Entity\Programas 
      */
     public function getIdPrograma()
     {
         return $this->idPrograma;
     }
+    
 }

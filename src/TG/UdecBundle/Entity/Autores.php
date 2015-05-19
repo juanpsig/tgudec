@@ -86,10 +86,10 @@ class Autores
     /**
      * Set idPersona
      *
-     * @param \Acme\DemoBundle\Entity\Personas $idPersona
+     * @param \TG\UdecBundle\Entity\Personas $idPersona
      * @return Autores
      */
-    public function setIdPersona(\Acme\DemoBundle\Entity\Personas $idPersona = null)
+    public function setIdPersona(\TG\UdecBundle\Entity\Personas $idPersona = null)
     {
         $this->idPersona = $idPersona;
 
@@ -109,10 +109,10 @@ class Autores
     /**
      * Set idTrabajo
      *
-     * @param \Acme\DemoBundle\Entity\Trabgrado $idTrabajo
+     * @param \TG\UdecBundle\Entity\Trabgrado $idTrabajo
      * @return Autores
      */
-    public function setIdTrabajo(\Acme\DemoBundle\Entity\Trabgrado $idTrabajo = null)
+    public function setIdTrabajo(\TG\UdecBundle\Entity\Trabgrado $idTrabajo = null)
     {
         $this->idTrabajo = $idTrabajo;
 
@@ -122,7 +122,7 @@ class Autores
     /**
      * Get idTrabajo
      *
-     * @return \Acme\DemoBundle\Entity\Trabgrado 
+     * @return \TG\UdecBundle\Entity\Trabgrado 
      */
     public function getIdTrabajo()
     {

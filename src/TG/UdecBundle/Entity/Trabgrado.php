@@ -89,6 +89,11 @@ class Trabgrado
      * })
      */
     private $idPrograma;
+    
+    
+    public function __construct() {
+        $this->fechaRg = new \DateTime(date("Y-m-d H:i:s"));
+    }
 
 
 

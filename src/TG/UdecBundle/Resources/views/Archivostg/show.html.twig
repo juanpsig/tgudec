@@ -1,0 +1,64 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Archivostg</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Resumen</th>
+                <td>{{ entity.resumen }}</td>
+            </tr>
+            <tr>
+                <th>Abstrc</th>
+                <td>{{ entity.abstrc }}</td>
+            </tr>
+            <tr>
+                <th>Articulo</th>
+                <td>{{ entity.articulo }}</td>
+            </tr>
+            <tr>
+                <th>Doc</th>
+                <td>{{ entity.doc }}</td>
+            </tr>
+            <tr>
+                <th>Manualtecn</th>
+                <td>{{ entity.manualTecn }}</td>
+            </tr>
+            <tr>
+                <th>Manualusr</th>
+                <td>{{ entity.manualUsr }}</td>
+            </tr>
+            <tr>
+                <th>Codigosw</th>
+                <td>{{ entity.codigoSw }}</td>
+            </tr>
+            <tr>
+                <th>Software</th>
+                <td>{{ entity.software }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ entity.estado }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('archivostg') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('archivostg_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

@@ -314,4 +314,8 @@ class Trabgrado
         return $this->idPrograma;
     }
     
+    public function __toString(){
+        return $this->getTitulo();
+    }
+    
 }

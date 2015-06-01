@@ -16,3 +16,6 @@ tg_udec_clasificacion:
 tg_udec_trabgrado:
     resource: "@TGUdecBundle/Resources/config/routing/trabgrado.yml"
     prefix:   /trabgrado
+tg_udec_trabgrado_adjuntos:
+    resource: "@TGUdecBundle/Resources/config/routing/archivostg.yml"
+    prefix:   /adjuntos

@@ -1,0 +1,57 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Archivostg list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Resumen</th>
+                <th>Abstrc</th>
+                <th>Articulo</th>
+                <th>Doc</th>
+                <th>Manualtecn</th>
+                <th>Manualusr</th>
+                <th>Codigosw</th>
+                <th>Software</th>
+                <th>Estado</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('archivostg_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.resumen }}</td>
+                <td>{{ entity.abstrc }}</td>
+                <td>{{ entity.articulo }}</td>
+                <td>{{ entity.doc }}</td>
+                <td>{{ entity.manualTecn }}</td>
+                <td>{{ entity.manualUsr }}</td>
+                <td>{{ entity.codigoSw }}</td>
+                <td>{{ entity.software }}</td>
+                <td>{{ entity.estado }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('archivostg_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('archivostg_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('archivostg_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

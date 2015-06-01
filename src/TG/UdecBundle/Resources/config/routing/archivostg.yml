@@ -1,0 +1,30 @@
+archivostg:
+    path:     /
+    defaults: { _controller: "TGUdecBundle:Archivostg:index" }
+
+archivostg_show:
+    path:     /{id}/show
+    defaults: { _controller: "TGUdecBundle:Archivostg:show" }
+
+archivostg_new:
+    path:     /new
+    defaults: { _controller: "TGUdecBundle:Archivostg:new" }
+
+archivostg_create:
+    path:     /create
+    defaults: { _controller: "TGUdecBundle:Archivostg:create" }
+    requirements: { _method: post }
+
+archivostg_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "TGUdecBundle:Archivostg:edit" }
+
+archivostg_update:
+    path:     /{id}/update
+    defaults: { _controller: "TGUdecBundle:Archivostg:update" }
+    requirements: { _method: post|put }
+
+archivostg_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "TGUdecBundle:Archivostg:delete" }
+    requirements: { _method: post|delete }

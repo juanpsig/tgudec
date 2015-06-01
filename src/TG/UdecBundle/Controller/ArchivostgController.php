@@ -4,6 +4,7 @@ namespace TG\UdecBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 use TG\UdecBundle\Entity\Archivostg;
 use TG\UdecBundle\Form\ArchivostgType;
@@ -40,7 +41,50 @@ class ArchivostgController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            $dir = "adjuntos/";
             $em = $this->getDoctrine()->getManager();
+            $filename=time();
+            //$form['resumen']->getData()->move($dir, $someNewFilename);
+            $resumen = $form['resumen']->getData();
+            $resumen->move($dir, $filename.'_'.$resumen->getClientOriginalName());
+            $dirResumen = $filename.'_'.$resumen->getClientOriginalName();
+            $entity->setResumen($dirResumen);
+            
+            $abstrc = $form['abstrc']->getData();
+            $abstrc->move($dir, $filename.'_'.$abstrc->getClientOriginalName());
+            $dirAbstrc = $filename.'_'.$abstrc->getClientOriginalName();
+            $entity->setAbstrc($dirAbstrc);
+            
+            $articulo = $form['articulo']->getData();
+            $articulo->move($dir, $filename.'_'.$articulo->getClientOriginalName());
+            $dirarticulo = $filename.'_'.$articulo->getClientOriginalName();
+            $entity->setArticulo($dirarticulo);
+            
+            $doc = $form['doc']->getData();
+            $doc->move($dir, $filename.'_'.$doc->getClientOriginalName());
+            $dirdoc = $filename.'_'.$doc->getClientOriginalName();
+            $entity->setDoc($dirdoc);
+            
+            $manualTecn = $form['manualTecn']->getData();
+            $manualTecn->move($dir, $filename.'_'.$manualTecn->getClientOriginalName());
+            $dirmanualTecn = $filename.'_'.$manualTecn->getClientOriginalName();
+            $entity->setManualTecn($dirmanualTecn);
+            
+            $manualUsr = $form['manualUsr']->getData();
+            $manualUsr->move($dir, $filename.'_'.$manualUsr->getClientOriginalName());
+            $dirmanualUsr = $filename.'_'.$manualUsr->getClientOriginalName();
+            $entity->setManualUsr($dirmanualUsr);
+            
+            $codigoSw = $form['codigoSw']->getData();
+            $codigoSw->move($dir, $filename.'_'.$codigoSw->getClientOriginalName());
+            $dircodigoSw= $filename.'_'.$codigoSw->getClientOriginalName();
+            $entity->setCodigoSw($dircodigoSw);
+            
+            $software = $form['software']->getData();
+            $software->move($dir, $filename.'_'.$software->getClientOriginalName());
+            $dirsoftware= $filename.'_'.$software->getClientOriginalName();
+            $entity->setSoftware($dirsoftware);
+            
             $em->persist($entity);
             $em->flush();
 

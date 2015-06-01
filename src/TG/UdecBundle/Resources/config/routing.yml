@@ -19,3 +19,6 @@ tg_udec_trabgrado:
 tg_udec_trabgrado_adjuntos:
     resource: "@TGUdecBundle/Resources/config/routing/archivostg.yml"
     prefix:   /adjuntos
+tg_udec_trabgrado_adjuntos_file:
+    pattern:   /file/{name}
+    defaults: { _controller: TGUdecBundle:Default:file }

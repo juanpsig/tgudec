@@ -5,7 +5,9 @@ namespace TG\UdecBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use JMS\Serializer\SerializerBuilder;
+
 
 class DefaultController extends Controller
 {
@@ -23,9 +25,18 @@ class DefaultController extends Controller
             'entities' => $entities,
         ));
     }
-    
-    
-    
+    public function fileAction($name){
+        $file = 'adjuntos/'.$name;
+        return new BinaryFileResponse($file);
+        return new Response($file);
+        //$response = new BinaryFileResponse($file);
+    }
+
+
+
+
+
+
     /* ejemplo
     public function getMiembroAction($idMrm){
         $request = $this->get('request');

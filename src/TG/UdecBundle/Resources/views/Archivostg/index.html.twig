@@ -1,45 +1,38 @@
-{% extends '::base.html.twig' %}
+{% extends 'TGUdecBundle::layout.html.twig' %}
 
-{% block body -%}
-    <h1>Archivostg list</h1>
+{% block contenido -%}
+    <header><h3>Adjuntos Trabajo de Grado</h3></header>
 
-    <table class="records_list">
+    <table class="tablesorter" cellspacing="0">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Resumen</th>
-                <th>Abstrc</th>
-                <th>Articulo</th>
-                <th>Doc</th>
-                <th>Manualtecn</th>
-                <th>Manualusr</th>
-                <th>Codigosw</th>
-                <th>Software</th>
-                <th>Estado</th>
-                <th>Actions</th>
+                <th>Adjuntos</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('archivostg_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.resumen }}</td>
-                <td>{{ entity.abstrc }}</td>
-                <td>{{ entity.articulo }}</td>
-                <td>{{ entity.doc }}</td>
-                <td>{{ entity.manualTecn }}</td>
-                <td>{{ entity.manualUsr }}</td>
-                <td>{{ entity.codigoSw }}</td>
-                <td>{{ entity.software }}</td>
-                <td>{{ entity.estado }}</td>
+                <td><ul>
+                    <li><a href="{{ path("tg_udec_homepage") }}file/{{ entity.resumen }}">{{ entity.resumen }}</a></li>
+                    <li><a href="{{ path("tg_udec_homepage") }}file/{{ entity.abstrc }}">{{ entity.abstrc }}</a></li>
+                    <li><a href="{{ path("tg_udec_homepage") }}file/{{ entity.articulo }}">{{ entity.articulo }}</a></li>
+                    <li><a href="{{ path("tg_udec_homepage") }}file/{{ entity.doc }}">{{ entity.doc }}</a></li>
+                    <li><a href="{{ path("tg_udec_homepage") }}file/{{ entity.manualTecn }}">{{ entity.manualTecn }}</a></li>
+                    <li><a href="{{ path("tg_udec_homepage") }}file/{{ entity.manualUsr }}">{{ entity.manualUsr }}</a></li>
+                    <li><a href="{{ path("tg_udec_homepage") }}file/{{ entity.codigoSw }}">{{ entity.codigoSw }}</a></li>
+                    <li><a href="{{ path("tg_udec_homepage") }}file/{{ entity.software }}">{{ entity.software }}</a></li>
+                    </ul></td>
                 <td>
-                <ul>
+                <ul><!--
                     <li>
                         <a href="{{ path('archivostg_show', { 'id': entity.id }) }}">show</a>
                     </li>
                     <li>
                         <a href="{{ path('archivostg_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
+                    </li>-->
                 </ul>
                 </td>
             </tr>

@@ -316,10 +316,10 @@ class Archivostg
     /**
      * Set idTrabajo
      *
-     * @param \Acme\DemoBundle\Entity\Trabgrado $idTrabajo
+     * @param \TG\UdecBundle\Entity\Trabgrado $idTrabajo
      * @return Archivostg
      */
-    public function setIdTrabajo(\Acme\DemoBundle\Entity\Trabgrado $idTrabajo = null)
+    public function setIdTrabajo(\TG\UdecBundle\Entity\Trabgrado $idTrabajo = null)
     {
         $this->idTrabajo = $idTrabajo;
 
@@ -329,7 +329,7 @@ class Archivostg
     /**
      * Get idTrabajo
      *
-     * @return \Acme\DemoBundle\Entity\Trabgrado 
+     * @return \TG\UdecBundle\Entity\Trabgrado 
      */
     public function getIdTrabajo()
     {

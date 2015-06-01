@@ -15,15 +15,15 @@ class ArchivostgType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('resumen')
-            ->add('abstrc')
-            ->add('articulo')
-            ->add('doc')
-            ->add('manualTecn')
-            ->add('manualUsr')
-            ->add('codigoSw')
-            ->add('software')
-            ->add('estado')
+            ->add('resumen','file',array('label'  => 'Resumen: '))
+            ->add('abstrc','file',array('label'  => 'Abstrac: '))
+            ->add('articulo','file',array('label'  => 'Artículo: '))
+            ->add('doc','file',array('label'  => 'Documento: '))
+            ->add('manualTecn','file',array('label'  => 'Manual Técnico: '))
+            ->add('manualUsr','file',array('label'  => 'Manual Usuario: '))
+            ->add('codigoSw','file',array('label'  => 'Código Fuente: '))
+            ->add('software','file',array('label'  => 'Software: '))
+            //->add('estado')
             ->add('idTrabajo')
         ;
     }

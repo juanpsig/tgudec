@@ -28,3 +28,7 @@ trabgrado_delete:
     path:     /{id}/delete
     defaults: { _controller: "TGUdecBundle:Trabgrado:delete" }
     requirements: { _method: post|delete }
+    
+trabgrado_adjuntar:
+    path:     /{id}/adjuntar
+    defaults: { _controller: "TGUdecBundle:Trabgrado:adjuntar" }

@@ -4,6 +4,8 @@ namespace TG\UdecBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
+use JMS\Serializer\SerializerBuilder;
 
 use TG\UdecBundle\Entity\Trabgrado;
 use TG\UdecBundle\Form\TrabgradoType;
@@ -28,6 +30,13 @@ class TrabgradoController extends Controller
         return $this->render('TGUdecBundle:Trabgrado:index.html.twig', array(
             'entities' => $entities,
         ));
+    }
+    public function adjuntarAction($id){
+        $em = $this->getDoctrine()->getManager();
+        $serializer = SerializerBuilder::create()->build();
+        $data['mensaje']='success';
+        $jsonContent = $serializer->serialize($data, 'json');
+        return new Response($jsonContent);
     }
     /**
      * Creates a new Trabgrado entity.

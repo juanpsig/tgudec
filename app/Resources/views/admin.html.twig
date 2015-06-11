@@ -70,8 +70,8 @@
 	</section><!-- end of secondary bar -->
 	
 	<aside id="sidebar" class="column">
-		<form class="quick_search">
-			<input type="text" value="Buscar Proyectos" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+		<form class="quick_search" action="{{ path("tg_udec_trabgrado_buscar_proyectos") }}" method="post">
+			<input id="buscadorProyectos" name="buscadorProyectos" type="text" value="Buscar Proyectos" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
 		</form>
 		<hr/>
 		<h3>Trabajos</h3>
@@ -354,6 +354,17 @@
 	</section>
 
 {% endblock %}
+<script>
+	$('#buscadorProyectos').keypress(function(e){   
+		if(e.which == 13){      
+			buscarProyectos();      
+		}   
+    });
+	function buscarProyectos(){
+		var txt = $('#buscadorProyectos').val();
+		alert(txt);
+	}
+</script>
 </body>
 
 </html>

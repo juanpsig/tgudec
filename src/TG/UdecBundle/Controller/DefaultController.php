@@ -28,9 +28,20 @@ class DefaultController extends Controller
     public function fileAction($name){
         $file = 'adjuntos/'.$name;
         return new BinaryFileResponse($file);
-        return new Response($file);
+        //return new Response($file);
         //$response = new BinaryFileResponse($file);
     }
+	public function buscarProyectosAction(Request $rqt){
+		$txt = $rqt->get('buscadorProyectos');
+		$em = $this->getDoctrine()->getManager();
+		$query = $em->createQuery("SELECT u FROM TGUdecBundle:Trabgrado u 
+                                        WHERE u.titulo LIKE'%$txt%' ORDER BY u.id");
+        $entities = $query->getResult();
+		//$entities = $em->getRepository('TGUdecBundle:Trabgrado')->findAll();
+		return $this->render('TGUdecBundle:Trabgrado:index.html.twig', array(
+            'entities' => $entities,
+        ));
+	}
 
 
 

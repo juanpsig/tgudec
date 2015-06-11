@@ -22,3 +22,6 @@ tg_udec_trabgrado_adjuntos:
 tg_udec_trabgrado_adjuntos_file:
     pattern:   /file/{name}
     defaults: { _controller: TGUdecBundle:Default:file }
+tg_udec_trabgrado_buscar_proyectos:
+    pattern:   /buscarproyectos
+    defaults: { _controller: TGUdecBundle:Default:buscarProyectos }

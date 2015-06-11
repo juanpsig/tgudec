@@ -54,7 +54,7 @@
 {% block body %}
 	<header id="header">
 		<hgroup>
-			<h1 class="site_title"><a href="index.html">UDEC - Chía</a></h1>
+			<h1 class="site_title"><a href="{{ path("tg_udec_homepage") }}">UDEC - Chía</a></h1>
 			<h2 class="section_title">Gestión de Proyectos</h2><!--<div class="btn_view_site"><a href="http://www.medialoot.com">View Site</a></div>-->
 		</hgroup>
 	</header> <!-- end of header bar -->
@@ -76,10 +76,10 @@
 		<hr/>
 		<h3>Trabajos</h3>
 		<ul class="toggle">
-			<li class="icn_new_article"><a href="{{ path("trabgrado") }}">Nuevo Trabajo</a></li>
-			<li class="icn_edit_article"><a href="#">Editar Trabajo</a></li>
+			<li class="icn_new_article"><a href="{{ path("trabgrado_new") }}">Nuevo Trabajo</a></li>
+			<!--<li class="icn_edit_article"><a href="#">Editar Trabajo</a></li>-->
 			<!--<li class="icn_categories"><a href="#">Categories</a></li>-->
-			<li class="icn_tags"><a href="#">Palabras Clave</a></li>
+			<li class="icn_tags"><a href="{{ path("tg_udec_homepage") }}">Todos los trabajos</a></li>
 		</ul>
 		<h3>Personas</h3>
 		<ul class="toggle">

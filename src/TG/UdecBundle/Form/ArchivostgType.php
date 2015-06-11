@@ -15,15 +15,14 @@ class ArchivostgType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('resumen','file',array('label'  => 'Resumen: '))
-            ->add('abstrc','file',array('label'  => 'Abstrac: '))
-            ->add('articulo','file',array('label'  => 'Artículo: '))
-            ->add('doc','file',array('label'  => 'Documento: '))
-            ->add('manualTecn','file',array('label'  => 'Manual Técnico: '))
-            ->add('manualUsr','file',array('label'  => 'Manual Usuario: '))
-            ->add('codigoSw','file',array('label'  => 'Código Fuente: '))
-            ->add('software','file',array('label'  => 'Software: '))
-            //->add('estado')
+            ->add('resumen','file',array('label'  => 'Resumen: ','required'=>false))
+            ->add('abstrc','file',array('label'  => 'Abstrac: ','required'=>false))
+            ->add('articulo','file',array('label'  => 'Artículo: ','required'=>false))
+            ->add('doc','file',array('label'  => 'Documento: ','required'=>false))
+            ->add('manualTecn','file',array('label'  => 'Manual Técnico: ','required'=>false))
+            ->add('manualUsr','file',array('label'  => 'Manual Usuario: ','required'=>false))
+            ->add('codigoSw','file',array('label'  => 'Código Fuente: ','required'=>false))
+            ->add('software','file',array('label'  => 'Software: ','required'=>false))
             ->add('idTrabajo')
         ;
     }

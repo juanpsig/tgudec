@@ -4,6 +4,7 @@
     <indexes>
       <index name="FK_trabgrado_programas" columns="id_programa"/>
       <index name="FK_trabgrado_clasificaciontg" columns="id_clasificacion"/>
+      <index name="FK_trabgrado_asesores" columns="id_asesor"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
@@ -23,6 +24,11 @@
     <many-to-one field="idClasificacion" target-entity="Clasificaciontg">
       <join-columns>
         <join-column name="id_clasificacion" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idAsesor" target-entity="Asesores">
+      <join-columns>
+        <join-column name="id_asesor" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>

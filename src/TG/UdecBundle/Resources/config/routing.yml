@@ -13,6 +13,12 @@ tg_udec_programas:
 tg_udec_clasificacion:
     resource: "@TGUdecBundle/Resources/config/routing/clasificaciontg.yml"
     prefix:   /clasificacion
+tg_udec_asesores_rutas:
+    resource: "@TGUdecBundle/Resources/config/routing/asesores.yml"
+    prefix:   /asesores
+tg_udec_autores_rutas:
+    resource: "@TGUdecBundle/Resources/config/routing/autores.yml"
+    prefix:   /autores
 tg_udec_trabgrado:
     resource: "@TGUdecBundle/Resources/config/routing/trabgrado.yml"
     prefix:   /trabgrado

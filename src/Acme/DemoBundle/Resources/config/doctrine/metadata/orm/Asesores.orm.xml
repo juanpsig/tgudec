@@ -3,14 +3,20 @@
   <entity name="Asesores" table="asesores">
     <indexes>
       <index name="FK_asesores_personas" columns="id_persona"/>
+      <index name="FK_asesores_trabajos" columns="id_trabajo"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="director" type="string" column="director" length="1" nullable="true"/>
-    <field name="jurado" type="string" column="jurado" length="1" nullable="true"/>
-    <field name="asesmetd" type="string" column="asesmetd" length="1" nullable="true"/>
+    <field name="director" type="boolean" column="director" nullable="true"/>
+    <field name="jurado" type="boolean" column="jurado" nullable="true"/>
+    <field name="asesmetd" type="boolean" column="asesmetd" nullable="true"/>
     <field name="estado" type="string" column="estado" length="1" nullable="true"/>
+    <many-to-one field="idTrabajo" target-entity="Trabgrado">
+      <join-columns>
+        <join-column name="id_trabajo" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="idPersona" target-entity="Personas">
       <join-columns>
         <join-column name="id_persona" referenced-column-name="id"/>

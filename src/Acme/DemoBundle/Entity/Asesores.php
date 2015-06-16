@@ -1,6 +1,6 @@
 <?php
 
-namespace TG\UdecBundle\Entity;
+namespace Acme\DemoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -50,16 +50,6 @@ class Asesores
     private $estado = '1';
 
     /**
-     * @var \Sedes
-     *
-     * @ORM\ManyToOne(targetEntity="Trabgrado")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_trabajo", referencedColumnName="id")
-     * })
-     */
-    private $idTrabajo;
-
-    /**
      * @var \Personas
      *
      * @ORM\ManyToOne(targetEntity="Personas")
@@ -68,6 +58,16 @@ class Asesores
      * })
      */
     private $idPersona;
+
+    /**
+     * @var \Trabgrado
+     *
+     * @ORM\ManyToOne(targetEntity="Trabgrado")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_trabajo", referencedColumnName="id")
+     * })
+     */
+    private $idTrabajo;
 
 
 
@@ -84,7 +84,7 @@ class Asesores
     /**
      * Set director
      *
-     * @param string $director
+     * @param boolean $director
      * @return Asesores
      */
     public function setDirector($director)
@@ -97,7 +97,7 @@ class Asesores
     /**
      * Get director
      *
-     * @return string 
+     * @return boolean 
      */
     public function getDirector()
     {
@@ -107,7 +107,7 @@ class Asesores
     /**
      * Set jurado
      *
-     * @param string $jurado
+     * @param boolean $jurado
      * @return Asesores
      */
     public function setJurado($jurado)
@@ -120,7 +120,7 @@ class Asesores
     /**
      * Get jurado
      *
-     * @return string 
+     * @return boolean 
      */
     public function getJurado()
     {
@@ -130,7 +130,7 @@ class Asesores
     /**
      * Set asesmetd
      *
-     * @param string $asesmetd
+     * @param boolean $asesmetd
      * @return Asesores
      */
     public function setAsesmetd($asesmetd)
@@ -143,7 +143,7 @@ class Asesores
     /**
      * Get asesmetd
      *
-     * @return string 
+     * @return boolean 
      */
     public function getAsesmetd()
     {
@@ -172,37 +172,14 @@ class Asesores
     {
         return $this->estado;
     }
-    
-    /**
-     * Set idTrabajo
-     *
-     * @param \TG\UdecBundle\Entity\Trabgrado $idTrabajo
-     * @return Asesores
-     */
-    public function setIdTrabajo(\TG\UdecBundle\Entity\Trabgrado $idTrabajo = null)
-    {
-        $this->idTrabajo = $idTrabajo;
-
-        return $this;
-    }
-
-    /**
-     * Get idTrabajo
-     *
-     * @return \TG\UdecBundle\Entity\Trabgrado 
-     */
-    public function getIdTrabajo()
-    {
-        return $this->idTrabajo;
-    }
 
     /**
      * Set idPersona
      *
-     * @param \TG\UdecBundle\Entity\Personas $idPersona
+     * @param \Acme\DemoBundle\Entity\Personas $idPersona
      * @return Asesores
      */
-    public function setIdPersona(\TG\UdecBundle\Entity\Personas $idPersona = null)
+    public function setIdPersona(\Acme\DemoBundle\Entity\Personas $idPersona = null)
     {
         $this->idPersona = $idPersona;
 
@@ -212,10 +189,33 @@ class Asesores
     /**
      * Get idPersona
      *
-     * @return \TG\UdecBundle\Entity\Personas 
+     * @return \Acme\DemoBundle\Entity\Personas 
      */
     public function getIdPersona()
     {
         return $this->idPersona;
+    }
+
+    /**
+     * Set idTrabajo
+     *
+     * @param \Acme\DemoBundle\Entity\Trabgrado $idTrabajo
+     * @return Asesores
+     */
+    public function setIdTrabajo(\Acme\DemoBundle\Entity\Trabgrado $idTrabajo = null)
+    {
+        $this->idTrabajo = $idTrabajo;
+
+        return $this;
+    }
+
+    /**
+     * Get idTrabajo
+     *
+     * @return \Acme\DemoBundle\Entity\Trabgrado 
+     */
+    public function getIdTrabajo()
+    {
+        return $this->idTrabajo;
     }
 }

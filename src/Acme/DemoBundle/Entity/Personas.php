@@ -1,6 +1,6 @@
 <?php
 
-namespace TG\UdecBundle\Entity;
+namespace Acme\DemoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -48,8 +48,6 @@ class Personas
      * @ORM\Column(name="segundo_apellido", type="string", length=50, nullable=true)
      */
     private $segundoApellido;
-    
-    private $nombre;
 
     /**
      * @var string
@@ -363,13 +361,5 @@ class Personas
     public function getEstado()
     {
         return $this->estado;
-    }
-    
-    public function getNombre(){
-        return $this->primerNombre.' '.$this->segundoNombre.' '.$this->primerApellido.' '.$this->segundoApellido;
-    }
-    
-    public function __toString(){
-        return $this->getNombre();
     }
 }

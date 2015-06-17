@@ -1,14 +1,14 @@
-{% extends '::base.html.twig' %}
+{% extends 'TGUdecBundle::layout.html.twig' %}
 
-{% block body -%}
-    <h1>Autores creation</h1>
+{% block contenido -%}
+    <header><h3>Nuevo Autor</h3></header>
 
     {{ form(form) }}
 
         <ul class="record_actions">
     <li>
         <a href="{{ path('autores') }}">
-            Back to the list
+            Volver
         </a>
     </li>
 </ul>

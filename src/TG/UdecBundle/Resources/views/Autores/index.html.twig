@@ -1,7 +1,7 @@
-{% extends '::base.html.twig' %}
+{% extends 'TGUdecBundle::layout.html.twig' %}
 
-{% block body -%}
-    <h1>Autores list</h1>
+{% block contenido -%}
+    <header><h3>Autores</h3></header>
 
     <table class="records_list">
         <thead>
@@ -34,7 +34,7 @@
         <ul>
         <li>
             <a href="{{ path('autores_new') }}">
-                Create a new entry
+                Crear Autor
             </a>
         </li>
     </ul>

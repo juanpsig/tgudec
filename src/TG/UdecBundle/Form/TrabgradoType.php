@@ -15,9 +15,9 @@ class TrabgradoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titulo')
+            ->add('titulo','text',array('label'=>'Título: '))
             ->add('concepto')
-            ->add('fechaGrado')
+            ->add('fechaGrado','date',array('years'=>range('2003',date("Y"))))
             ->add('palabrasClave')
             ->add('tipoTrabajo')
             ->add('estado')

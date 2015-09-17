@@ -1,3 +1,54 @@
+Pendientes:
+
+
+Cambiar el logo, en la parte superior donde dice UDEC-chia
+Validar todos los campos, personas 
+Cuando se crea al proyecto, pide un asesor y este deberia listar bien los datos.(http://localhost/tgudec/web/asesores/?id=1)
+Cuando se listan los autores hay que arreglar el contenido (http://localhost/tgudec/web/autores/?id=1)
+Buscar por las listar
+Arreglar texto de crud (de todos los formularios)
+Clasificaciones deben aparecer los asesores por combo o lista.
+Visualizar solo pdf.
+Verificar que pasa con el subir documentos.
+En adjuntos se pueden quitar código fuente y software abstrac
+Carpetas individuales,  por tipo de archivos  
+Los archivos se van a llamar como la persona los suba
+Arreglar las rutas de los archivos al visualizar
+Organizar  los adjuntos q están asignados al proyecto  
+Archivos adjuntos, que se listen los adjunto y buscar, visualizar
+
+
+
+
+
+
+
+
+
+
+
+Cambiar el logo , ne laparte superior donde dice UDEC-chia
+validar todos los campos , personas
+cuando se crea al proyecto , pide un asesor y este deberia listar bien lo datos.(http://localhost/tgudec/web/asesores/?id=1)
+cuando se listan los autores ya que arreglar el contenido (http://localhost/tgudec/web/autores/?id=1)
+Buscar por als listar
+Arreglar texto de crud
+Clasificaciones deben aparecer los asesores por combo o lista.
+visualizar solo pdf
+verificar que pasa con el subir documentos
+
+En adjuntos se pueden quitar codigo fuente y software abstrac
+carpetas individuales ,  por tipo de archivos
+losarchivos se van a llamar como la persona los suba
+
+arreglar las rutas de los archivos al visualizar
+organizar  los adjuntos q estan asignados al proyecto
+archivos adjunto , que lsite los adjunto  y buscar, visualizar.
+
+
+
+
+
 Symfony Standard Edition
 ========================
 

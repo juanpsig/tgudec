@@ -15,17 +15,18 @@ class PersonasType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('primerNombre')
+            ->add('primerNombre','text')
             ->add('segundoNombre')
-            ->add('primerApellido')
+            ->add('primerApellido','text')
             ->add('segundoApellido')
-            ->add('codigo')
-            ->add('email')
+            ->add('codigo','text')
+            ->add('email','email')
             ->add('telefonoFijo')
-            ->add('movil')
-            ->add('tipoDoc')
-            ->add('numeroDoc')
-            ->add('estado')
+            ->add('movil','text')
+            //->add('tipoDoc','text')
+            ->add('tipoDoc', 'choice', array('choices' => array('CC' => 'Cédula de Ciudadanía', 'CE' => 'Cédula de Extranjería','PA' => 'Pasaporte','TI' => 'Tarjeta Identidad'),'attr' => array('class'=>'form-control'),'empty_value' => 'Seleccione su estado civil'))
+            ->add('numeroDoc','text')
+            //->add('estado')
         ;
     }
     

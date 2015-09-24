@@ -4,23 +4,31 @@
 <head>
 	<meta charset="utf-8"/>
 	<title>Gestion de Proyectos - UDEC</title>
-	
 	<link rel="stylesheet" href="{{ asset("admin/css/layout.css") }}" type="text/css" media="screen" />
 	<!--[if lt IE 9]>
 	<link rel="stylesheet" href="{{ asset("admin/css/ie.css") }}" type="text/css" media="screen" />
+
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-	<script src="{{ asset("admin/js/jquery-1.5.2.min.js") }}" type="text/javascript"></script>
+	<script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="{{ asset("admin/js/hideshow.js") }}" type="text/javascript"></script>
 	<script src="{{ asset("admin/js/jquery.tablesorter.min.js") }}" type="text/javascript"></script>
 	<script src="{{ asset("admin/js/jquery.equalHeight.js") }}" type="text/javascript"></script>
         <script src="{{ asset("admin/js/scripts.js") }}" type="text/javascript"></script>
-	<script type="text/javascript">
+
+        <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" language="javascript" src="//cdn.datatables.net/responsive/1.0.0/js/dataTables.responsive.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/responsive/1.0.0/css/dataTables.responsive.css">
+
+    <script type="text/javascript">
 	$(document).ready(function() 
     	{ 
-      	  $(".tablesorter").tablesorter(); 
+      	  //$(".tablesorter").tablesorter(); 
+          $('#example').DataTable();
    	 } 
 	);
+    
+    
 	$(document).ready(function() {
 
 	//When page loads...

@@ -21,10 +21,21 @@ class AsesoresController extends Controller
      */
     public function indexAction()
     {
+        //echo 'aca sql';exit();
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('TGUdecBundle:Asesores')->findAll();
+        //$entities = $em->getRepository('TGUdecBundle:Asesores')->findAll();
 
+        $sql = "select a.*,concat(p.primer_nombre,' ',p.primer_apellido
+) as persona from asesores a inner join  personas p on p.id=a.id_persona";
+        //echo $sql;exit();   
+        //$where = "WHERE CONCAT(c.identificacion, ' ',c.nombre, ' ',c.apellido) like '%".$datos->get('cliente')."%'";   
+        $con = $this->getDoctrine()->getManager()->getConnection()->prepare($sql);
+        $con->execute();
+        $entities = $con->fetchAll();
+
+        
+        
         return $this->render('TGUdecBundle:Asesores:index.html.twig', array(
             'entities' => $entities,
         ));

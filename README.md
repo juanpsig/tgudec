@@ -3,8 +3,8 @@ Pendientes:
 
 Cambiar el logo, en la parte superior donde dice UDEC-chia
 Validar todos los campos, personas (ok)
-Cuando se crea al proyecto, pide un asesor y este deberia listar bien los datos.(http://localhost/tgudec/web/asesores/?id=1)
-Cuando se listan los autores hay que arreglar el contenido (http://localhost/tgudec/web/autores/?id=1)
+Cuando se crea al proyecto, pide un asesor y este deberia listar bien los datos.(ok)(http://localhost/tgudec/web/asesores/?id=1)(creo que el tema esta bien porq puede tener variso asesores y autores)(es mejorar los listar)
+Cuando se listan los autores hay que arreglar el contenido (http://localhost/tgudec/web/autores/?id=1)(ok)
 Buscar por las listar
 Arreglar texto de crud (de todos los formularios)
 Clasificaciones deben aparecer los asesores por combo o lista.

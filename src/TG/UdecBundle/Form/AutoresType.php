@@ -15,7 +15,7 @@ class AutoresType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('estado')
+            //->add('estado')
             ->add('idPersona')
             ->add('idTrabajo')
         ;

@@ -5,11 +5,12 @@ Cambiar el logo, en la parte superior donde dice UDEC-chia
 Validar todos los campos, personas (ok)
 Cuando se crea al proyecto, pide un asesor y este deberia listar bien los datos.(ok)(http://localhost/tgudec/web/asesores/?id=1)(creo que el tema esta bien porq puede tener variso asesores y autores)(es mejorar los listar)
 Cuando se listan los autores hay que arreglar el contenido (http://localhost/tgudec/web/autores/?id=1)(ok)
-Buscar por las listar
-Arreglar texto de crud (de todos los formularios)
-Clasificaciones deben aparecer los asesores por combo o lista.
-Visualizar solo pdf.
-Verificar que pasa con el subir documentos.
+palabras claves del proyecto(ok)
+Buscar por las listar(ok)
+Arreglar texto de crud (de todos los formularios)(ok persona)
+Clasificaciones deben aparecer los asesores por combo o lista.(arreglar la relacion a persona)
+Visualizar solo pdf.(https://c952f7tl.apps.lair.io/web/adjuntos/1443484841_CertificateNodeDBA.pdf)(utilziar web ok)
+Verificar que pasa con el subir documentos.(esta mostrando siempre el mismo)
 En adjuntos se pueden quitar código fuente y software abstrac
 Carpetas individuales,  por tipo de archivos  
 Los archivos se van a llamar como la persona los suba

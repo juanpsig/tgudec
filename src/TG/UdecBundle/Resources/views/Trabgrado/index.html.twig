@@ -12,6 +12,7 @@
                 <th>Concepto</th>
                 <th>F. Grado</th>
                 <th>Tipo</th>
+                <th>Palabras claves</th>
                 <th>Estado</th>
                 <th>Acciones</th>
             </tr>
@@ -25,6 +26,7 @@
                 <td>{{ entity.concepto }}</td>
                 <td>{% if entity.fechaGrado %}{{ entity.fechaGrado|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ entity.tipoTrabajo }}</td>
+                 <td>{{ entity.palabrasClave }}</td>
                 <td>{{ entity.estado }}</td>
                 <td>
                 <ul>

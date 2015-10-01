@@ -16,13 +16,13 @@ class ArchivostgType extends AbstractType
     {
         $builder
             ->add('resumen','file',array('label'  => 'Resumen: ','required'=>false))
-            ->add('abstrc','file',array('label'  => 'Abstrac: ','required'=>false))
+            //->add('abstrc','file',array('label'  => 'Abstrac: ','required'=>false))
             ->add('articulo','file',array('label'  => 'Artículo: ','required'=>false))
             ->add('doc','file',array('label'  => 'Documento: ','required'=>false))
             ->add('manualTecn','file',array('label'  => 'Manual Técnico: ','required'=>false))
             ->add('manualUsr','file',array('label'  => 'Manual Usuario: ','required'=>false))
-            ->add('codigoSw','file',array('label'  => 'Código Fuente: ','required'=>false))
-            ->add('software','file',array('label'  => 'Software: ','required'=>false))
+            //->add('codigoSw','file',array('label'  => 'Código Fuente: ','required'=>false))
+            //->add('software','file',array('label'  => 'Software: ','required'=>false))
             ->add('idTrabajo')
         ;
     }

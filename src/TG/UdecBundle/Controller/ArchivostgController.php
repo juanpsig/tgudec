@@ -22,6 +22,8 @@ class ArchivostgController extends Controller
      */
     public function indexAction()
     {
+        //echo 'hola2';
+        // la variable $em es la encargada de realizar conexion
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('TGUdecBundle:Archivostg')->findAll();
@@ -36,6 +38,7 @@ class ArchivostgController extends Controller
      */
     public function createAction(Request $request)
     {
+        //echo 'sali';exit();
         $entity = new Archivostg();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -121,12 +124,13 @@ class ArchivostgController extends Controller
      */
     private function createCreateForm(Archivostg $entity)
     {
+        //trabajando aca
         $form = $this->createForm(new ArchivostgType(), $entity, array(
             'action' => $this->generateUrl('archivostg_create'),
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Crear'));
 
         return $form;
     }
@@ -279,5 +283,19 @@ class ArchivostgController extends Controller
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
+    }
+
+    public function listarAction($id)
+    {
+        //echo 'listar '.$id;exit();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('TGUdecBundle:Archivostg')->findBy(array('idTrabajo' => $id));
+
+        return $this->render('TGUdecBundle:Archivostg:index.html.twig', array(
+            'entities' => $entities,
+        ));
+
     }
 }

@@ -28,3 +28,8 @@ archivostg_delete:
     path:     /{id}/delete
     defaults: { _controller: "TGUdecBundle:Archivostg:delete" }
     requirements: { _method: post|delete }
+
+archivostg_listar:
+    path:     /{id}/listar
+    defaults: { _controller: "TGUdecBundle:Archivostg:listar" }
+    #requirements: { _method: post|delete }

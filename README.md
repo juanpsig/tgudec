@@ -10,7 +10,7 @@ Buscar por las listar(ok)
 Arreglar texto de crud (de todos los formularios)(ok persona)
 Clasificaciones deben aparecer los asesores por combo o lista.(arreglar la relacion a persona)
 Visualizar solo pdf.(https://c952f7tl.apps.lair.io/web/adjuntos/1443484841_CertificateNodeDBA.pdf)(utilziar web ok)
-Verificar que pasa con el subir documentos.(esta mostrando siempre el mismo)
+Verificar que pasa con el subir documentos.(esta mostrando siempre el mismo ok)(verificar al guardar el id del archivo)
 En adjuntos se pueden quitar código fuente y software abstrac
 Carpetas individuales,  por tipo de archivos  
 Los archivos se van a llamar como la persona los suba

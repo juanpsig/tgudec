@@ -38,6 +38,8 @@ class ArchivostgController extends Controller
      */
     public function createAction(Request $request)
     {
+
+        
         //echo 'sali';exit();
         $entity = new Archivostg();
         $form = $this->createCreateForm($entity);
@@ -48,8 +50,16 @@ class ArchivostgController extends Controller
             $em = $this->getDoctrine()->getManager();
             $filename=time();
             $resumen = $form['resumen']->getData();
+            //aca se deberia realizar la validacion por peso
+            //echo $form['resumen']->getData()->getSize();exit();
+            
 			if($resumen){
-				$resumen->move($dir, $filename.'_'.$resumen->getClientOriginalName());
+			    $folder = $dir.'resume';
+                if (!is_dir($folder)) {
+                    mkdir($folder);   
+                    }
+                    
+				$resumen->move($folder, $filename.'_'.$resumen->getClientOriginalName());
 				$dirResumen = $filename.'_'.$resumen->getClientOriginalName();
 				$entity->setResumen($dirResumen);
 			}
@@ -63,28 +73,49 @@ class ArchivostgController extends Controller
             
             $articulo = $form['articulo']->getData();
 			if($articulo){
-				$articulo->move($dir, $filename.'_'.$articulo->getClientOriginalName());
+			    
+			    $folder = $dir.'articulo';
+                if (!is_dir($folder)) {
+                    mkdir($folder);   
+                    }
+                
+				$articulo->move($folder, $filename.'_'.$articulo->getClientOriginalName());
 				$dirarticulo = $filename.'_'.$articulo->getClientOriginalName();
 				$entity->setArticulo($dirarticulo);
 			}
             
             $doc = $form['doc']->getData();
 			if($doc){
-				$doc->move($dir, $filename.'_'.$doc->getClientOriginalName());
+			    
+			    $folder = $dir.'documento';
+                if (!is_dir($folder)) {
+                    mkdir($folder);   
+                    }
+                    
+				$doc->move($folder, $filename.'_'.$doc->getClientOriginalName());
 				$dirdoc = $filename.'_'.$doc->getClientOriginalName();
 				$entity->setDoc($dirdoc);
 			}
             
             $manualTecn = $form['manualTecn']->getData();
 			if($manualTecn){
-				$manualTecn->move($dir, $filename.'_'.$manualTecn->getClientOriginalName());
+			    $folder = $dir.'manualTech';
+                if (!is_dir($folder)) {
+                    mkdir($folder);   
+                    }
+				$manualTecn->move($folder, $filename.'_'.$manualTecn->getClientOriginalName());
 				$dirmanualTecn = $filename.'_'.$manualTecn->getClientOriginalName();
 				$entity->setManualTecn($dirmanualTecn);
 			}
             
             $manualUsr = $form['manualUsr']->getData();
 			if($manualUsr){
-				$manualUsr->move($dir, $filename.'_'.$manualUsr->getClientOriginalName());
+			    $folder = $dir.'manualUsr';
+                if (!is_dir($folder)) {
+                    mkdir($folder);   
+                    }
+                    
+				$manualUsr->move($folder, $filename.'_'.$manualUsr->getClientOriginalName());
 				$dirmanualUsr = $filename.'_'.$manualUsr->getClientOriginalName();
 				$entity->setManualUsr($dirmanualUsr);
             }
@@ -98,7 +129,12 @@ class ArchivostgController extends Controller
             
             $software = $form['software']->getData();
 			if($software){
-				$software->move($dir, $filename.'_'.$software->getClientOriginalName());
+			    $folder = $dir.'software';
+                if (!is_dir($folder)) {
+                    mkdir($folder);   
+                    }
+                    
+				$software->move($folder, $filename.'_'.$software->getClientOriginalName());
 				$dirsoftware= $filename.'_'.$software->getClientOriginalName();
 				$entity->setSoftware($dirsoftware);
 			}

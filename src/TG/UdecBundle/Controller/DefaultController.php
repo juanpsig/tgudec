@@ -24,7 +24,7 @@ class DefaultController extends Controller
         
         
         $sql="select t.*,c.* from trabgrado t 
-        inner join clasificaciontg c";
+        inner join clasificaciontg c on t.id_clasificacion=c.id";
 
         //$con = $this->getDoctrine()->getManager()->getConnection()->prepare($sql);
         $con = $em->getConnection()->prepare($sql);

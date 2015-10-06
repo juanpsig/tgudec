@@ -8,15 +8,19 @@ Cuando se listan los autores hay que arreglar el contenido (http://localhost/tgu
 palabras claves del proyecto(ok)
 Buscar por las listar(ok)
 Arreglar texto de crud (de todos los formularios)(ok persona)
-Clasificaciones deben aparecer los asesores por combo o lista.(arreglar la relacion a persona)
+Clasificaciones deben aparecer los asesores por combo o lista.(arreglar la relacion a persona)(ok)
 Visualizar solo pdf.(https://c952f7tl.apps.lair.io/web/adjuntos/1443484841_CertificateNodeDBA.pdf)(utilziar web ok)
-Verificar que pasa con el subir documentos.(esta mostrando siempre el mismo ok)(verificar al guardar el id del archivo)(se guarda bien , el probleam es que hay q eligir el id del proyecto , debido a esto es mejor sacarlo a un menu aparte)
-En adjuntos se pueden quitar código fuente y software abstrac
-Carpetas individuales,  por tipo de archivos  
-Los archivos se van a llamar como la persona los suba(debido a la configuracion de la base de datos , no se puede cambiar al nombre original debido a que hay una sola tabla para todos los archivos)(se le agrega un time en el codigo para que no queden nombres repidos "Walther lo hizo ")
+Verificar que pasa con el subir documentos.(esta mostrando siempre el mismo ok)(verificar al guardar el id del archivo)
+(se guarda bien , el probleam es que hay q eligir el id del proyecto , debido a esto es mejor sacarlo a un menu aparte)
+En adjuntos se pueden quitar código fuente y software abstrac(ok)
+Carpetas individuales,  por tipo de archivos  (esto tomaria tiempo porq se tendria que realizar if por cada tipo de archivo , 
+adicional con la configuracion de la tabla no lo permite)
+Los archivos se van a llamar como la persona los suba(debido a la configuracion de la base de datos ,
+no se puede cambiar al nombre original debido a que hay una sola tabla para todos los archivos)(se le agrega un time en el codigo para que no queden nombres repidos "Walther lo hizo ")
 Arreglar las rutas de los archivos al visualizar(ok esto ya funciona en produccion)
 Organizar  los adjuntos q están asignados al proyecto  (ok ya se valido que seleccione el proyecto para que no quede con el id en blanco)
 Archivos adjuntos, que se listen los adjunto y buscar, visualizar(ok)
+quitar el estado y agregar a la lista la clasificacion (ok)
 
 
 

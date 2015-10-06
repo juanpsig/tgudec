@@ -23,6 +23,7 @@ class TrabgradoController extends Controller
      */
     public function indexAction()
     {
+        //echo 'hola';exit;
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('TGUdecBundle:Trabgrado')->findAll();

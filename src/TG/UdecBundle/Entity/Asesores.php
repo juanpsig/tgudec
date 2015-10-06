@@ -218,4 +218,8 @@ class Asesores
     {
         return $this->idPersona;
     }
+    
+    public function __toString(){
+        return $this->getIdPersona()->getPrimerNombre().' '.$this->getIdPersona()->getPrimerApellido();
+    }
 }

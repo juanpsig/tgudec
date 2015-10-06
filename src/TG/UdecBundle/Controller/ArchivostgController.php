@@ -54,12 +54,12 @@ class ArchivostgController extends Controller
 				$entity->setResumen($dirResumen);
 			}
             
-            $abstrc = $form['abstrc']->getData();
-            if($abstrc){
-				$abstrc->move($dir, $filename.'_'.$abstrc->getClientOriginalName());
-				$dirAbstrc = $filename.'_'.$abstrc->getClientOriginalName();
-				$entity->setAbstrc($dirAbstrc);
-			}
+//             $abstrc = $form['abstrc']->getData();
+//             if($abstrc){
+// 				$abstrc->move($dir, $filename.'_'.$abstrc->getClientOriginalName());
+// 				$dirAbstrc = $filename.'_'.$abstrc->getClientOriginalName();
+// 				$entity->setAbstrc($dirAbstrc);
+// 			}
             
             $articulo = $form['articulo']->getData();
 			if($articulo){
@@ -89,12 +89,12 @@ class ArchivostgController extends Controller
 				$entity->setManualUsr($dirmanualUsr);
             }
 			
-            $codigoSw = $form['codigoSw']->getData();
-            if($codigoSw){
-				$codigoSw->move($dir, $filename.'_'.$codigoSw->getClientOriginalName());
-				$dircodigoSw= $filename.'_'.$codigoSw->getClientOriginalName();
-				$entity->setCodigoSw($dircodigoSw);
-			}
+//             $codigoSw = $form['codigoSw']->getData();
+//             if($codigoSw){
+// 				$codigoSw->move($dir, $filename.'_'.$codigoSw->getClientOriginalName());
+// 				$dircodigoSw= $filename.'_'.$codigoSw->getClientOriginalName();
+// 				$entity->setCodigoSw($dircodigoSw);
+// 			}
             
             $software = $form['software']->getData();
 			if($software){

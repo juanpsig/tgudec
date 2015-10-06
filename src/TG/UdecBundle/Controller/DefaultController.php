@@ -12,6 +12,7 @@ use JMS\Serializer\SerializerBuilder;
 class DefaultController extends Controller
 {
     public function indexAction(){
+        //echo 'hola';exit();
         /*$serializer = SerializerBuilder::create()->build();
         $data['mensaje']='success';
         $jsonContent = $serializer->serialize($data, 'json');
@@ -19,7 +20,19 @@ class DefaultController extends Controller
         return $this->render('TGUdecBundle:Default:index.html.twig');*/
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('TGUdecBundle:Trabgrado')->findAll();
+        //$entities = $em->getRepository('TGUdecBundle:Trabgrado')->findAll();
+        
+        
+        $sql="select t.*,c.* from trabgrado t 
+        inner join clasificaciontg c";
+
+        //$con = $this->getDoctrine()->getManager()->getConnection()->prepare($sql);
+        $con = $em->getConnection()->prepare($sql);
+        
+        $con->execute();
+        $entities = $con->fetchAll(); 
+        
+        
 
         return $this->render('TGUdecBundle:Trabgrado:index.html.twig', array(
             'entities' => $entities,

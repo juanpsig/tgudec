@@ -13,7 +13,7 @@
                 <th>F. Grado</th>
                 <th>Tipo</th>
                 <th>Palabras claves</th>
-                <th>Estado</th>
+                <th>Clasificacion</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -21,13 +21,14 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('trabgrado_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{% if entity.fechaRg %}{{ entity.fechaRg|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.fecha_rg %}{{ entity.fecha_rg|date('Y-m-d H:i:s') }}{% endif %}</td>
+               
                 <td>{{ entity.titulo }}</td>
                 <td>{{ entity.concepto }}</td>
-                <td>{% if entity.fechaGrado %}{{ entity.fechaGrado|date('Y-m-d') }}{% endif %}</td>
-                <td>{{ entity.tipoTrabajo }}</td>
-                 <td>{{ entity.palabrasClave }}</td>
-                <td>{{ entity.estado }}</td>
+                <td>{% if entity.fecha_grado %}{{ entity.fecha_grado|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ entity.tipo_trabajo }}</td>
+                 <td>{{ entity.palabras_clave }}</td>
+               <td>{{ entity.nombre }}</td>
                 <td>
                 <ul>
                     <li>

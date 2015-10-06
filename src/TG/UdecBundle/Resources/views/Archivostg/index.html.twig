@@ -16,14 +16,14 @@
             <tr>
                 <td><a href="{{ path('archivostg_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td><ul>
-                    <li><a href="{{ path("tg_udec_homepage") }}adjuntos/{{ entity.resumen }}">{{ entity.resumen }}</a></li>
-                    <li><a href="{{ path("tg_udec_homepage") }}adjuntos/{{ entity.abstrc }}">{{ entity.abstrc }}</a></li>
-                    <li><a href="{{ path("tg_udec_homepage") }}adjuntos/{{ entity.articulo }}">{{ entity.articulo }}</a></li>
-                    <li><a href="{{ path("tg_udec_homepage") }}adjuntos/{{ entity.doc }}">{{ entity.doc }}</a></li>
-                    <li><a href="{{ path("tg_udec_homepage") }}adjuntos/{{ entity.manualTecn }}">{{ entity.manualTecn }}</a></li>
-                    <li><a href="{{ path("tg_udec_homepage") }}adjuntos/{{ entity.manualUsr }}">{{ entity.manualUsr }}</a></li>
-                    <li><a href="{{ path("tg_udec_homepage") }}adjuntos/{{ entity.codigoSw }}">{{ entity.codigoSw }}</a></li>
-                    <li><a href="{{ path("tg_udec_homepage") }}adjuntos/{{ entity.software }}">{{ entity.software }}</a></li>
+                    <li>Resumen <a href="{{ path("tg_udec_homepage") }}adjuntos/{{ entity.resumen }}">{{ entity.resumen }}</a></li>
+                    {#<li><a href="{{ path("tg_udec_homepage") }}adjuntos/{{ entity.abstrc }}">{{ entity.abstrc }}</a></li>#}
+                    <li>Articulo<a href="{{ path("tg_udec_homepage") }}adjuntos/{{ entity.articulo }}">{{ entity.articulo }}</a></li>
+                    <li>Documento <a href="{{ path("tg_udec_homepage") }}adjuntos/{{ entity.doc }}">{{ entity.doc }}</a></li>
+                    <li>Manual tecnico <a href="{{ path("tg_udec_homepage") }}adjuntos/{{ entity.manualTecn }}">{{ entity.manualTecn }}</a></li>
+                    <li>Manual de usuario <a href="{{ path("tg_udec_homepage") }}adjuntos/{{ entity.manualUsr }}">{{ entity.manualUsr }}</a></li>
+                    {#<li><a href="{{ path("tg_udec_homepage") }}adjuntos/{{ entity.codigoSw }}">{{ entity.codigoSw }}</a></li>#}
+                    <li>Software <a href="{{ path("tg_udec_homepage") }}adjuntos/{{ entity.software }}">{{ entity.software }}</a></li>
                     </ul></td>
                 <td>
                 <ul><!--

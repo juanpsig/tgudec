@@ -79,9 +79,10 @@
 	</section><!-- end of secondary bar -->
 	
 	<aside id="sidebar" class="column">
-		<form class="quick_search" action="{{ path("tg_udec_trabgrado_buscar_proyectos") }}" method="post">
-			<input id="buscadorProyectos" name="buscadorProyectos" type="text" value="Buscar Proyectos" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
-		</form>
+		{#<form class="quick_search" action="{{ path("tg_udec_trabgrado_buscar_proyectos") }}" method="post">#}
+		{#	<input id="buscadorProyectos" name="buscadorProyectos" type="text" value="Buscar Proyectos" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">#}
+		{#</form>#}
+		
 		<hr/>
 		<h3>Trabajos</h3>
 		<ul class="toggle">
@@ -113,6 +114,7 @@
 		
 		<footer>
 			<hr />
+			<img src="{{ asset("admin/images/uc.jpg") }}"  alt="S" >
 			<p><strong>Universidad de Cundinamarca &copy; 2015</strong></p>
 			
 		</footer>

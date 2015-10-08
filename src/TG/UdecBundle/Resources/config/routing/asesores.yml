@@ -2,6 +2,11 @@ asesores:
     path:     /
     defaults: { _controller: "TGUdecBundle:Asesores:index" }
 
+asesores_proyecto:
+    path:     /proyecto/{id}
+    defaults: { _controller: "TGUdecBundle:Asesores:proyecto" }
+
+
 asesores_show:
     path:     /{id}/show
     defaults: { _controller: "TGUdecBundle:Asesores:show" }

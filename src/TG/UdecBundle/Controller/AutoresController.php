@@ -21,19 +21,43 @@ class AutoresController extends Controller
      */
     public function indexAction()
     {
+        //echo 'hola';exit();
         $em = $this->getDoctrine()->getManager();
-
+        //echo $id;exit();
         //$entities = $em->getRepository('TGUdecBundle:Autores')->findAll();
-        //
         $sql = "select a.*,concat(p.primer_nombre,' ',p.primer_apellido
-) as persona from asesores a inner join  personas p on p.id=a.id_persona";
+) as persona from autores  a inner join  personas p on p.id=a.id_persona";
+        //echo $sql;exit();   
+        //$where = "WHERE CONCAT(c.ideificacion, ' ',c.nombre, ' ',c.apellido) like '%".$datos->get('cliente')."%'";   
+        $con = $this->getDoctrine()->getManager()->getConnection()->prepare($sql);
+        $con->execute();
+        $entities = $con->fetchAll();
+        
+
+ 
+        return $this->render('TGUdecBundle:Autores:index.html.twig', array(
+            'entities' => $entities,
+        ));
+    }
+    
+    
+    public function proyectoAction($id)
+    {
+        //echo 'hola';exit();
+        $em = $this->getDoctrine()->getManager();
+        //echo $id;exit();
+        //$entities = $em->getRepository('TGUdecBundle:Autores')->findAll();
+       
+        $sql = "select a.*,concat(p.primer_nombre,' ',p.primer_apellido
+) as persona from autores a inner join  personas p on p.id=a.id_persona
+        where a.id_trabajo=".$id." ";
         //echo $sql;exit();   
         //$where = "WHERE CONCAT(c.identificacion, ' ',c.nombre, ' ',c.apellido) like '%".$datos->get('cliente')."%'";   
         $con = $this->getDoctrine()->getManager()->getConnection()->prepare($sql);
         $con->execute();
         $entities = $con->fetchAll();
 
-
+ 
         return $this->render('TGUdecBundle:Autores:index.html.twig', array(
             'entities' => $entities,
         ));

@@ -24,9 +24,20 @@ class TrabgradoController extends Controller
     public function indexAction()
     {
         //echo 'hola';exit;
-        $em = $this->getDoctrine()->getManager();
+       $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('TGUdecBundle:Trabgrado')->findAll();
+        //$entities = $em->getRepository('TGUdecBundle:Trabgrado')->findAll();
+        
+        
+        $sql="select t.*,c.nombre from trabgrado t 
+        inner join clasificaciontg c on t.id_clasificacion=c.id";
+
+        //$con = $this->getDoctrine()->getManager()->getConnection()->prepare($sql);
+        $con = $em->getConnection()->prepare($sql);
+        
+        $con->execute();
+          $entities = $con->fetchAll(); 
+        
 
         return $this->render('TGUdecBundle:Trabgrado:index.html.twig', array(
             'entities' => $entities,

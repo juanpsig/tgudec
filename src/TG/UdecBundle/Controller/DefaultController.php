@@ -23,7 +23,7 @@ class DefaultController extends Controller
         //$entities = $em->getRepository('TGUdecBundle:Trabgrado')->findAll();
         
         
-        $sql="select t.*,c.* from trabgrado t 
+        $sql="select t.*,c.nombre from trabgrado t 
         inner join clasificaciontg c on t.id_clasificacion=c.id";
 
         //$con = $this->getDoctrine()->getManager()->getConnection()->prepare($sql);

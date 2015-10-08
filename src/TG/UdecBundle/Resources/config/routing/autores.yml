@@ -1,6 +1,10 @@
 autores:
     path:     /
     defaults: { _controller: "TGUdecBundle:Autores:index" }
+    
+autores_proyecto:
+    path:     /proyecto/{id}
+    defaults: { _controller: "TGUdecBundle:Autores:proyecto" }
 
 autores_show:
     path:     /{id}/show

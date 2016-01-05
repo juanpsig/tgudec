@@ -50,8 +50,8 @@
                 <td>{{ entity.numeroDoc }}</td>
             </tr>
             <tr>
-                <th>Estado</th>
-                <td>{{ entity.estado }}</td>
+              {#  <th>Estado</th>#}
+              {#  <td>{{ entity.estado }}</td>#}
             </tr>
         </tbody>
     </table>
@@ -67,6 +67,7 @@
             Editar
         </a>
     </li>
-    <li>{{ form(delete_form) }}</li>
+
+    {#<li><p>{{ form(delete_form) }}</p></li>#}
 </ul>
 {% endblock %}

@@ -3,17 +3,19 @@
 {% block contenido -%}
     <header><h3>Trabajos de Grado</h3></header>
 
-    <table id="example" name="example"  class="display" cellspacing="0" width="100%">
+    <table id="example" name="example"  class="display" cellspacing="17" width="100%">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Registro</th>
-                <th>Titulo</th>
-                <th>Concepto</th>
-                <th>F. Grado</th>
+              {#  <th>Registro</th> #}
+                <th>Título</th>
+               {# <th>Concepto</th> #}
+                <th>Fecha Grado</th>
                 <th>Tipo</th>
                 <th>Palabras claves</th>
-                <th>Clasificacion</th>
+               <th>Clasificación</th>
+                <th>Programa</th>
+				 <th>Nombre</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -21,14 +23,15 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('trabgrado_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{% if entity.fecha_rg %}{{ entity.fecha_rg|date('Y-m-d H:i:s') }}{% endif %}</td>
-               
+              {#  <td>{% if entity.fecha_rg %}{{ entity.fecha_rg|date('Y-m-d H:i:s') }}{% endif %}</td>  #}
                 <td>{{ entity.titulo }}</td>
-                <td>{{ entity.concepto }}</td>
+               {#  <td>{{ entity.concepto }}</td> #}
                 <td>{% if entity.fecha_grado %}{{ entity.fecha_grado|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ entity.tipo_trabajo }}</td>
                  <td>{{ entity.palabras_clave }}</td>
                <td>{{ entity.nombre }}</td>
+               <td>{{ entity.idprog }}</td>
+			   <td>{{ entity.primer_nombre  }}</td>
                 <td>
                 <ul>
                     <li>
@@ -38,7 +41,7 @@
                         <a href="{{ path('trabgrado_edit', { 'id': entity.id }) }}">editar</a>
                     </li>
                     <li>
-                        <a href="{{ path('archivostg_listar', { 'id': entity.id }) }}">adjuntos</a>
+                        <a href="{{ path('archivostg_listar', { 'id': entity.id }) }}">ArchivosTG</a>
                     </li>
 					<li>
                         <a href="{{ path('asesores_proyecto', { 'id': entity.id }) }}">asesores</a>
@@ -56,7 +59,7 @@
         <ul>
         <li>
             <a href="{{ path('trabgrado_new') }}">
-                Crear un nuevo trabajo
+                Crear un nuevo Trabajo de Grado
             </a>
         </li>
     </ul>

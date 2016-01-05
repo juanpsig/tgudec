@@ -127,7 +127,7 @@ class ArchivostgController extends Controller
 // 				$entity->setCodigoSw($dircodigoSw);
 // 			}
             
-            $software = $form['software']->getData();
+            /* $software = $form['software']->getData();
 			if($software){
 			    $folder = $dir.'software';
                 if (!is_dir($folder)) {
@@ -137,7 +137,7 @@ class ArchivostgController extends Controller
 				$software->move($folder, $filename.'_'.$software->getClientOriginalName());
 				$dirsoftware= $filename.'_'.$software->getClientOriginalName();
 				$entity->setSoftware($dirsoftware);
-			}
+			} */
             
             $em->persist($entity);
             $em->flush();
@@ -212,33 +212,6 @@ class ArchivostgController extends Controller
      * Displays a form to edit an existing Archivostg entity.
      *
      */
-    public function editAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('TGUdecBundle:Archivostg')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Archivostg entity.');
-        }
-
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('TGUdecBundle:Archivostg:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-    /**
-    * Creates a form to edit a Archivostg entity.
-    *
-    * @param Archivostg $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
     private function createEditForm(Archivostg $entity)
     {
         $form = $this->createForm(new ArchivostgType(), $entity, array(

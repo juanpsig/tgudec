@@ -37,10 +37,10 @@
                 <th>Codigosw</th>
                 <td>{{ entity.codigoSw }}</td>
             </tr>
-            <tr>
+            {# <tr>
                 <th>Software</th>
                 <td>{{ entity.software }}</td>
-            </tr>
+            </tr> #}
             <tr>
                 <th>Estado</th>
                 <td>{{ entity.estado }}</td>
@@ -51,14 +51,11 @@
         <ul class="record_actions">
     <li>
         <a href="{{ path('archivostg') }}">
-            Back to the list
+            Volver a la Lista
         </a>
     </li>
-    <li>
-        <a href="{{ path('archivostg_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
+
+	 <h2>Borrar Archivostg</h2> {#CRUD BORRAR COMENTADO#}
     <li>{{ form(delete_form) }}</li>
 </ul>
 {% endblock %}

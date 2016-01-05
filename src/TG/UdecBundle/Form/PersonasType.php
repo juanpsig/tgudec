@@ -19,17 +19,16 @@ class PersonasType extends AbstractType
             ->add('segundoNombre')
             ->add('primerApellido','text')
             ->add('segundoApellido')
-            ->add('codigo','integer')
-            ->add('email','email')
-            ->add('telefonoFijo')
-            ->add('movil','text')
-            //->add('tipoDoc','text')
-            ->add('tipoDoc', 'choice', array('choices' => array('CC' => 'Cédula de Ciudadanía', 'CE' => 'Cédula de Extranjería','PA' => 'Pasaporte','TI' => 'Tarjeta Identidad'),'attr' => array('class'=>'form-control'),'empty_value' => 'Seleccione su tipo de Documento'))
-            ->add('numeroDoc','text')
+            ->add('codigo','integer',array('required' => false))
+            ->add('email','email',array('required' => false))
+            //->add('telefonoFijo')
+            ->add('movil','text',array('required' => false))
+            //->add('tipoDoc', 'choice', array('choices' => array('CC' => 'Cédula de Ciudadanía', 'CE' => 'Cédula de Extranjería','PA' => 'Pasaporte','TI' => 'Tarjeta Identidad','I' => 'Datos Incompletos'),'attr' => array('class'=>'form-control'),'empty_value' => 'Seleccione su tipo de Documento'))
+            //->add('numeroDoc','text',array('required' => false))
             //->add('estado')
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */

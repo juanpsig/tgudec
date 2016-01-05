@@ -595,10 +595,15 @@ $this->headers = clone $this->headers;
 }
 public function __toString()
 {
+try {
+$content = $this->getContent();
+} catch (\LogicException $e) {
+return trigger_error($e, E_USER_ERROR);
+}
 return
 sprintf('%s %s %s', $this->getMethod(), $this->getRequestUri(), $this->server->get('SERVER_PROTOCOL'))."\r\n".
 $this->headers."\r\n".
-$this->getContent();
+$content;
 }
 public function overrideGlobals()
 {
@@ -976,12 +981,27 @@ return in_array($this->getMethod(), array('GET','HEAD'));
 }
 public function getContent($asResource = false)
 {
-if (false === $this->content || (true === $asResource && null !== $this->content)) {
-throw new \LogicException('getContent() can only be called once when using the resource return type.');
+$currentContentIsResource = is_resource($this->content);
+if (PHP_VERSION_ID < 50600 && false === $this->content) {
+throw new \LogicException('getContent() can only be called once when using the resource return type and PHP below 5.6.');
 }
 if (true === $asResource) {
+if ($currentContentIsResource) {
+rewind($this->content);
+return $this->content;
+}
+if (is_string($this->content)) {
+$resource = fopen('php://temp','r+');
+fwrite($resource, $this->content);
+rewind($resource);
+return $resource;
+}
 $this->content = false;
 return fopen('php://input','rb');
+}
+if ($currentContentIsResource) {
+rewind($this->content);
+return stream_get_contents($this->content);
 }
 if (null === $this->content) {
 $this->content = file_get_contents('php://input');
@@ -1122,8 +1142,8 @@ $requestUri = $this->getRequestUri();
 if ($baseUrl && false !== $prefix = $this->getUrlencodedPrefix($requestUri, $baseUrl)) {
 return $prefix;
 }
-if ($baseUrl && false !== $prefix = $this->getUrlencodedPrefix($requestUri, rtrim(dirname($baseUrl),'/').'/')) {
-return rtrim($prefix,'/');
+if ($baseUrl && false !== $prefix = $this->getUrlencodedPrefix($requestUri, rtrim(dirname($baseUrl),'/'.DIRECTORY_SEPARATOR).'/')) {
+return rtrim($prefix,'/'.DIRECTORY_SEPARATOR);
 }
 $truncatedRequestUri = $requestUri;
 if (false !== $pos = strpos($requestUri,'?')) {
@@ -1136,7 +1156,7 @@ return'';
 if (strlen($requestUri) >= strlen($baseUrl) && (false !== $pos = strpos($requestUri, $baseUrl)) && $pos !== 0) {
 $baseUrl = substr($requestUri, 0, $pos + strlen($baseUrl));
 }
-return rtrim($baseUrl,'/');
+return rtrim($baseUrl,'/'.DIRECTORY_SEPARATOR);
 }
 protected function prepareBasePath()
 {
@@ -1165,7 +1185,8 @@ $pathInfo ='/';
 if ($pos = strpos($requestUri,'?')) {
 $requestUri = substr($requestUri, 0, $pos);
 }
-if (null !== $baseUrl && false === $pathInfo = substr($requestUri, strlen($baseUrl))) {
+$pathInfo = substr($requestUri, strlen($baseUrl));
+if (null !== $baseUrl && (false === $pathInfo ||''=== $pathInfo)) {
 return'/';
 } elseif (null === $baseUrl) {
 return $requestUri;
@@ -1263,7 +1284,7 @@ $this->setContent($content);
 $this->setStatusCode($status);
 $this->setProtocolVersion('1.0');
 if (!$this->headers->has('Date')) {
-$this->setDate(new \DateTime(null, new \DateTimeZone('UTC')));
+$this->setDate(\DateTime::createFromFormat('U', time(), new \DateTimeZone('UTC')));
 }
 }
 public static function create($content ='', $status = 200, $headers = array())
@@ -1398,7 +1419,7 @@ if ($this->isInvalid()) {
 throw new \InvalidArgumentException(sprintf('The HTTP status code "%s" is not valid.', $code));
 }
 if (null === $text) {
-$this->statusText = isset(self::$statusTexts[$code]) ? self::$statusTexts[$code] :'';
+$this->statusText = isset(self::$statusTexts[$code]) ? self::$statusTexts[$code] :'unknown status';
 return $this;
 }
 if (false === $text) {
@@ -1453,7 +1474,7 @@ return $this;
 }
 public function mustRevalidate()
 {
-return $this->headers->hasCacheControlDirective('must-revalidate') || $this->headers->has('proxy-revalidate');
+return $this->headers->hasCacheControlDirective('must-revalidate') || $this->headers->hasCacheControlDirective('proxy-revalidate');
 }
 public function getDate()
 {
@@ -1638,7 +1659,7 @@ return false;
 $notModified = false;
 $lastModified = $this->headers->get('Last-Modified');
 $modifiedSince = $request->headers->get('If-Modified-Since');
-if ($etags = $request->getEtags()) {
+if ($etags = $request->getETags()) {
 $notModified = in_array($this->getEtag(), $etags) || in_array('*', $etags);
 }
 if ($modifiedSince && $lastModified) {
@@ -2239,11 +2260,11 @@ protected $booted;
 protected $name;
 protected $startTime;
 protected $loadClassCache;
-const VERSION ='2.3.30';
-const VERSION_ID ='20330';
-const MAJOR_VERSION ='2';
-const MINOR_VERSION ='3';
-const RELEASE_VERSION ='30';
+const VERSION ='2.3.35';
+const VERSION_ID = 20335;
+const MAJOR_VERSION = 2;
+const MINOR_VERSION = 3;
+const RELEASE_VERSION = 35;
 const EXTRA_VERSION ='';
 public function __construct($environment, $debug)
 {
@@ -2404,7 +2425,7 @@ public function getRootDir()
 {
 if (null === $this->rootDir) {
 $r = new \ReflectionObject($this);
-$this->rootDir = str_replace('\\','/', dirname($r->getFileName()));
+$this->rootDir = dirname($r->getFileName());
 }
 return $this->rootDir;
 }

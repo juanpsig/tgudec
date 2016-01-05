@@ -1,16 +1,16 @@
 /* Essentials */
 
-html, div, map, dt, isindex, form, header, aside, section, section, article, footer {  
-    display: block;  
-} 
+html, div, map, dt, isindex, form, header, aside, section, section, article, footer {
+    display: block;
+}
 
 html, body {
 height: 100%;
 margin: 0;
 padding: 0;
-font-family: "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif;
-background: #F8F8F8;
-font-size: 12px;
+font-family: "Times New Roman",Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
+background: #0E3D38;/* color del fondo de la aplicación*/
+font-size: 14px;
 }
 
 .clear {
@@ -21,7 +21,7 @@ clear: both;
 height: 20px;
 }
 
-a:link, a:visited {
+a:link, a:visited { /*color del link (id, crear nuevo trabajo, etc)*/
 color: #77BACE;
 text-decoration: none;
 }
@@ -35,27 +35,27 @@ text-decoration: underline;
 
 header#header {
 height: 55px;
-width: 100%;
-background: #222222 url(../images/header_bg.png) repeat-x;
+width: 170%; /*Cambia el header del primer titulo (Gestion de Proyectos)*/
+background: #ffffff; /* url(../images/header_bg.png) repeat-x; */ /*Cambiar el Color del Fondo del Titulo*/
 }
 
-header#header h1.site_title, header#header h2.section_title {
+header#header h1.site_title, header#header h2.section_title {  /*TITULOS DE ENCABEZADO (UDEC CHIA, GESTION PROYECTOS)*/
 float: left;
 margin: 0;
-font-size: 22px;
+font-size: 52px;
 display: block;
-width: 23%;
+width: 25%; /*Cambia el header de UDEC - CHIA */
 height: 55px;
 font-weight: normal;
 text-align: left;
 text-indent: 1.8%;
 line-height: 55px;
-color: #fff;
+color: #0B025F;
 text-shadow: 0 -1px 0 #000;
 }
 
 header#header h1.site_title a {
-color: #fff;
+color: #0B025F; /*Cambia el color de las letras*/
 text-decoration: none;
 }
 
@@ -63,7 +63,7 @@ header#header h2.section_title {
 text-align: center;
 text-indent: 4.5%;
 width: 68%;
-background: url(../images/header_shadow.png) no-repeat left top;
+background:#fff;  /* url(../images/header_shadow.png) no-repeat right; */  /*Cambiar el Color del Fondo del Titulo*/
 }
 
 .btn_view_site {
@@ -87,11 +87,11 @@ text-shadow: 0 -1px 0 #000;}
 background-position: 0 -27px;
 }
 
-/* Secondary Header Bar */
+/* Secondary Header Bar (NOMBRE DE USUARIO) */
 
 section#secondary_bar {
 height: 38px;
-width: 100%;
+width: 170%;
 background: #F1F1F4 url(../images/secondary_bar.png) repeat-x;
 }
 
@@ -192,26 +192,28 @@ margin: 0 5px;
 
 /* Sidebar */
 
-aside#sidebar {
-width: 23%;
-background: #E0E0E3 url(../images/sidebar.png) repeat;
+aside#sidebar { /*cambia el menu*/
+width: 17%;
+/* background: #F4BA0D url(../images/sidebar.png) repeat; */
+background: #FFDD36;
 float: left;
-min-height: 500px;
-margin-top: -4px;
+min-height: 5px;
+margin-top: -7px;
 }
 
-#sidebar hr {
+#sidebar hr { /*Divisor del menu*/
 border: none;
 outline: none;
-background: url(../images/sidebar_divider.png) repeat-x;
+background: #CFC927 url(../images/sidebar_divider.png) repeat-x;
+background: #CFC927 url(../images/loguc.png) repeat-x;
 display: block;
 width: 100%;
-height: 2px;}
+height: 177px;}
 
 
 /* Search */
 
-.quick_search {
+ /* .quick_search {
 text-align: center;
 padding: 14px 0 10px 0;
 }
@@ -239,14 +241,14 @@ border: 1px solid #77BACE;
 -webkit-box-shadow: inset 0 2px 2px #ccc, 0 0 10px #ADDCE6;
 -moz-box-shadow: inset 0 2px 2px #ccc, 0 0 10px #ADDCE6;
 box-shadow: inset 0 2px 2px #ccc, 0 0 10px #ADDCE6;
-}
+} */
 
 /* Sidebar Menu */
 
 #sidebar h3 {
-color: #1F1F20;
+color: #080808;
 text-transform: uppercase;
-text-shadow: 0 1px 0 #fff;
+text-shadow: 0 1px #091378;
 font-size: 13px;
 margin: 10px 0 10px 6%;
 display: block;
@@ -279,7 +281,7 @@ margin: 0 0 0 12%; padding: 0;
 }
 
 #sidebar li a {
-color: #666666;
+color: #091378;
 padding-left: 25px;
 text-decoration: none;
 display: inline-block;
@@ -353,9 +355,9 @@ text-decoration: none;
 text-decoration: underline;
 }
 
-#sidebar footer {
+/* #sidebar footer {
 margin-top: 20%;
-}
+} */
 
 
 /* Main Content */
@@ -390,22 +392,22 @@ border-radius: 5px;
 background: #ffffff;
 }
 
-#main .module header h3 {
+#main .module header h3 { /*TITULO DE LA VISTA*/
 display: block;
 width: 90%;
-float: left;
+float: center;
 }
 
 .module header {
 height: 38px;
-width: 100%;
+width: 10%;
 background: #F1F1F4 url(../images/secondary_bar.png) repeat-x;
 -webkit-border-top-left-radius: 5px; -webkit-border-top-right-radius: 5px;
 -moz-border-radius-topleft: 5px; -moz-border-radius-topright: 5px;
 border-top-left-radius: 5px; border-top-right-radius: 5px;
 }
 
-.module footer {
+/* .module footer {
 height: 32px;
 width: 100%;
 border-top: 1px solid #9CA1B0;
@@ -413,7 +415,7 @@ background: #F1F1F4 url(../images/module_footer_bg.png) repeat-x;
 -webkit-border-bottom-left-radius: 5px; -webkit-border-bottom-right-radius: 5px;
 -moz-border-radius-bottomleft: 5px; -moz-border-radius-bottomright: 5px;
 -webkit-border-bottom-left-radius: 5px; -webkit-border-bottom-right-radius: 5px;
-}
+} */
 
 .module_content {
 margin: 10px 20px;
@@ -421,8 +423,8 @@ color: #666;}
 
 /* Module Widths */
 
-.width_full {
-width: 95%;
+.width_full {  /*MODIFICAR TAMAÑO DE VISTA*/
+width: 175%;
 }
 
 .width_half {
@@ -438,7 +440,7 @@ float: left;
 }
 
 .width_3_quarter {
-width: 66%;
+width: 777%;
 margin-right: 0;
 float: left;
 }
@@ -818,7 +820,7 @@ line-height: 150%;
 
 /* Alerts */
 
-#main h4.alert_info {
+#main h4.alert_info { /*Mensaje de bienvenidos al sistema de gestion de TG UDEC*/
 display: block;
 width: 95%;
 margin: 20px 3% 0 3%;
@@ -826,10 +828,10 @@ margin-top: 20px;
 -webkit-border-radius: 5px;
 -moz-border-radius: 5px;
 border-radius: 5px;
-background: #B5E5EF url(../images/icn_alert_info.png) no-repeat;
+background: #E2F8FC url(../images/icn_alert_info.png) no-repeat;
 background-position: 10px 10px;
 border: 1px solid #77BACE;
-color: #082B33;
+color: #090000; /*Color de las letras*/
 padding: 10px 0;
 text-indent: 40px;
 font-size: 14px;}

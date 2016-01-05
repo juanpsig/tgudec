@@ -71,7 +71,7 @@ class Clasificaciontg
      *   @ORM\JoinColumn(name="id_asesores", referencedColumnName="id")
      * })
      */
-   // private $idAsesores;
+    //private $idAsesores;
 
 
 
@@ -210,20 +210,20 @@ class Clasificaciontg
      * @param \TG\UdecBundle\Entity\Asesores $idAsesores
      * @return Clasificaciontg
      */
-   /*  public function setIdAsesores(\TG\UdecBundle\Entity\Asesores $idAsesores = null)
+    /*public function setIdAsesores(\TG\UdecBundle\Entity\Asesores $idAsesores = null)
     {
         $this->idAsesores = $idAsesores;
 
         return $this;
-    }
- */
+    }*/
+	
     /**
      * Get idAsesores
      *
      * @return \TG\UdecBundle\Entity\Asesores 
      */
-    /* public function getIdAsesores()
+    /*public function getIdAsesores()
     {
         return $this->idAsesores;
-    } */
+    }*/
 }

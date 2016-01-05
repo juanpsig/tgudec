@@ -18,9 +18,9 @@ class ClasificaciontgType extends AbstractType
             ->add('nombre')
             ->add('electiva')
             ->add('descripcion')
-            //->add('asesoria')
+            ->add('asesoria')
             //->add('estado')
-            ->add('idAsesores')
+            //->add('idAsesores')
         ;
     }
     

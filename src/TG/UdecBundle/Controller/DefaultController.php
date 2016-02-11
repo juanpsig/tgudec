@@ -22,7 +22,7 @@ class DefaultController extends Controller
 
         //$entities = $em->getRepository('TGUdecBundle:Trabgrado')->findAll();
         
-        
+		
         $sql="select t.*,c.nombre, p.id idprog, ps.primer_nombre from trabgrado t
         inner join clasificaciontg c on t.id_clasificacion=c.id
         inner join programas p on t.id_programa=p.id

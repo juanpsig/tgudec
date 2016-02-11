@@ -3,7 +3,7 @@
 {% block contenido -%}
     <header><h3>Trabajos de Grado</h3></header>
 
-    <table id="example" name="example"  class="display" cellspacing="17" width="100%">
+     <table table id="example" name="example"  class="display" cellspacing="17" width="100%">
         <thead>
             <tr>
                 <th>Id</th>
@@ -30,8 +30,8 @@
                 <td>{{ entity.tipo_trabajo }}</td>
                  <td>{{ entity.palabras_clave }}</td>
                <td>{{ entity.nombre }}</td>
-               <td>{# entity.idprog #}</td>
-			   <td>{# entity.primer_nombre  #}</td>
+               <td>{{ entity.idprog }}</td>
+			   <td>{{ entity.primer_nombre }}</td>
                 <td>
                 <ul>
                     <li>

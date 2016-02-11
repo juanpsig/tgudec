@@ -100,7 +100,7 @@ class AutoresController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'CREAR'));
 
         return $form;
     }
@@ -180,7 +180,7 @@ class AutoresController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'ACTUALIZAR'));
 
         return $form;
     }
@@ -250,7 +250,7 @@ class AutoresController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('autores_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'BORRAR'))
             ->getForm()
         ;
     }

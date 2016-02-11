@@ -52,9 +52,9 @@ class Personas
     private $nombre;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="codigo", type="string", length=27, nullable=true)
+     * @ORM\Column(name="codigo", type="integer", length=27, nullable=true)
      */
     private $codigo;
 

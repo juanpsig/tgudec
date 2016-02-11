@@ -217,7 +217,7 @@ class PersonasController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('personas_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Eliminar'))
+            ->add('submit', 'submit', array('label' => 'BORRAR'))
             ->getForm()
         ;
     }

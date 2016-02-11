@@ -29,8 +29,9 @@ class TrabgradoController extends Controller
         //$entities = $em->getRepository('TGUdecBundle:Trabgrado')->findAll();
         
         
-        $sql="select t.*,c.nombre from trabgrado t 
-        inner join clasificaciontg c on t.id_clasificacion=c.id";
+        $sql="select t.*,c.nombre, p.id idprog from trabgrado t
+        inner join clasificaciontg c on t.id_clasificacion=c.id
+        inner join programas p on t.id_programa=p.id";
 
         //$con = $this->getDoctrine()->getManager()->getConnection()->prepare($sql);
         $con = $em->getConnection()->prepare($sql);

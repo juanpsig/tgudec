@@ -24,7 +24,6 @@ class ArchivostgType extends AbstractType
             //->add('codigoSw','file',array('label'  => 'Código Fuente: ','required'=>false))
             //->add('software','file',array('label'  => 'Software: ','required'=>false))
             ->add('idTrabajo','entity', array('label' => 'Codigo Trabajo','class' => 'TGUdecBundle:Trabgrado','empty_value' => 'Seleccione un trabajo',))
-            //->add('idTrabajo')
         ;
     }
     

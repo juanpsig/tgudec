@@ -385,6 +385,9 @@ $headers['AUTHORIZATION'] = $authorizationHeader;
 }
 }
 }
+if (isset($headers['AUTHORIZATION'])) {
+return $headers;
+}
 if (isset($headers['PHP_AUTH_USER'])) {
 $headers['AUTHORIZATION'] ='Basic '.base64_encode($headers['PHP_AUTH_USER'].':'.$headers['PHP_AUTH_PW']);
 } elseif (isset($headers['PHP_AUTH_DIGEST'])) {
@@ -728,17 +731,22 @@ if (!self::$trustedHeaders[self::HEADER_CLIENT_IP] || !$this->headers->has(self:
 return array($ip);
 }
 $clientIps = array_map('trim', explode(',', $this->headers->get(self::$trustedHeaders[self::HEADER_CLIENT_IP])));
-$clientIps[] = $ip;
-$ip = $clientIps[0];
+$clientIps[] = $ip; $firstTrustedIp = null;
 foreach ($clientIps as $key => $clientIp) {
 if (preg_match('{((?:\d+\.){3}\d+)\:\d+}', $clientIp, $match)) {
 $clientIps[$key] = $clientIp = $match[1];
 }
-if (IpUtils::checkIp($clientIp, self::$trustedProxies)) {
+if (!filter_var($clientIp, FILTER_VALIDATE_IP)) {
 unset($clientIps[$key]);
 }
+if (IpUtils::checkIp($clientIp, self::$trustedProxies)) {
+unset($clientIps[$key]);
+if (null === $firstTrustedIp) {
+$firstTrustedIp = $clientIp;
 }
-return $clientIps ? array_reverse($clientIps) : array($ip);
+}
+}
+return $clientIps ? array_reverse($clientIps) : array($firstTrustedIp);
 }
 public function getClientIp()
 {
@@ -1181,7 +1189,6 @@ $baseUrl = $this->getBaseUrl();
 if (null === ($requestUri = $this->getRequestUri())) {
 return'/';
 }
-$pathInfo ='/';
 if ($pos = strpos($requestUri,'?')) {
 $requestUri = substr($requestUri, 0, $pos);
 }
@@ -1270,7 +1277,8 @@ public static $statusTexts = array(
 415 =>'Unsupported Media Type',
 416 =>'Requested Range Not Satisfiable',
 417 =>'Expectation Failed',
-418 =>'I\'m a teapot', 422 =>'Unprocessable Entity', 423 =>'Locked', 424 =>'Failed Dependency', 425 =>'Reserved for WebDAV advanced collections expired proposal', 426 =>'Upgrade Required', 428 =>'Precondition Required', 429 =>'Too Many Requests', 431 =>'Request Header Fields Too Large', 500 =>'Internal Server Error',
+418 =>'I\'m a teapot', 422 =>'Unprocessable Entity', 423 =>'Locked', 424 =>'Failed Dependency', 425 =>'Reserved for WebDAV advanced collections expired proposal', 426 =>'Upgrade Required', 428 =>'Precondition Required', 429 =>'Too Many Requests', 431 =>'Request Header Fields Too Large', 451 =>'Unavailable For Legal Reasons',
+500 =>'Internal Server Error',
 501 =>'Not Implemented',
 502 =>'Bad Gateway',
 503 =>'Service Unavailable',
@@ -1984,6 +1992,9 @@ throw new RuntimeException(sprintf('You cannot set service "%s" of inactive scop
 }
 $this->scopedServices[$scope][$id] = $service;
 }
+if (isset($this->aliases[$id])) {
+unset($this->aliases[$id]);
+}
 $this->services[$id] = $service;
 if (method_exists($this, $method ='synchronize'.strtr($id, $this->underscoreMap).'Service')) {
 $this->$method();
@@ -2258,11 +2269,11 @@ protected $booted;
 protected $name;
 protected $startTime;
 protected $loadClassCache;
-const VERSION ='2.3.37';
-const VERSION_ID = 20337;
+const VERSION ='2.3.38';
+const VERSION_ID = 20338;
 const MAJOR_VERSION = 2;
 const MINOR_VERSION = 3;
-const RELEASE_VERSION = 37;
+const RELEASE_VERSION = 38;
 const EXTRA_VERSION ='';
 public function __construct($environment, $debug)
 {
@@ -2630,14 +2641,15 @@ $rawChunk ='';
 $output ='';
 $tokens = token_get_all($source);
 $ignoreSpace = false;
-for (reset($tokens); false !== $token = current($tokens); next($tokens)) {
-if (is_string($token)) {
+for ($i = 0; isset($tokens[$i]); ++$i) {
+$token = $tokens[$i];
+if (!isset($token[1]) ||'b"'=== $token) {
 $rawChunk .= $token;
 } elseif (T_START_HEREDOC === $token[0]) {
 $output .= $rawChunk.$token[1];
 do {
-$token = next($tokens);
-$output .= $token[1];
+$token = $tokens[++$i];
+$output .= isset($token[1]) &&'b"'!== $token ? $token[1] : $token;
 } while ($token[0] !== T_END_HEREDOC);
 $rawChunk ='';
 } elseif (T_WHITESPACE === $token[0]) {
@@ -2656,6 +2668,10 @@ $ignoreSpace = true;
 }
 }
 $output .= $rawChunk;
+if (PHP_VERSION_ID >= 70000) {
+unset($tokens, $rawChunk);
+gc_mem_caches();
+}
 return $output;
 }
 public function serialize()
@@ -2677,8 +2693,8 @@ private $prefix;
 protected $decorated;
 public function __construct($prefix, $decorated)
 {
-if (!extension_loaded('apc')) {
-throw new \RuntimeException('Unable to use ApcClassLoader as APC is not enabled.');
+if (!function_exists('apcu_fetch')) {
+throw new \RuntimeException('Unable to use ApcClassLoader as APC is not installed.');
 }
 if (!method_exists($decorated,'findFile')) {
 throw new \InvalidArgumentException('The class finder must implement a "findFile" method.');
@@ -2703,8 +2719,8 @@ return true;
 }
 public function findFile($class)
 {
-if (false === $file = apc_fetch($this->prefix.$class)) {
-apc_store($this->prefix.$class, $file = $this->decorated->findFile($class));
+if (false === $file = apcu_fetch($this->prefix.$class)) {
+apcu_store($this->prefix.$class, $file = $this->decorated->findFile($class));
 }
 return $file;
 }

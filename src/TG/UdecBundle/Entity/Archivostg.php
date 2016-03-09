@@ -1,5 +1,7 @@
 <?php
 
+// src\TG\UdecBundle\Entity\Archivostg.php
+
 namespace TG\UdecBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;

@@ -48,13 +48,11 @@ class Personas
      * @ORM\Column(name="segundo_apellido", type="string", length=50, nullable=true)
      */
     private $segundoApellido;
-    
-    private $nombre;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="codigo", type="integer", length=27, nullable=true)
+     * @ORM\Column(name="codigo", type="string", length=27, nullable=true)
      */
     private $codigo;
 
@@ -98,7 +96,7 @@ class Personas
      *
      * @ORM\Column(name="estado", type="string", length=1, nullable=true)
      */
-    private $estado = '1';
+    private $estado;
 
 
 
@@ -363,13 +361,5 @@ class Personas
     public function getEstado()
     {
         return $this->estado;
-    }
-    
-    public function getNombre(){
-        return $this->primerNombre.' '.$this->segundoNombre.' '.$this->primerApellido.' '.$this->segundoApellido;
-    }
-    
-    public function __toString(){
-        return $this->getNombre();
     }
 }

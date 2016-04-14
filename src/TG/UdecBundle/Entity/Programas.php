@@ -40,7 +40,7 @@ class Programas
      *
      * @ORM\Column(name="estado", type="string", length=1, nullable=true)
      */
-    private $estado = '1';
+    private $estado;
 
     /**
      * @var \Sedes
@@ -154,9 +154,5 @@ class Programas
     public function getIdSede()
     {
         return $this->idSede;
-    }
-    
-    public function __toString(){
-        return $this->getNombre();
     }
 }

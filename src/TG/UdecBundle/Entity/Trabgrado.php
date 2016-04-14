@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Trabgrado
  *
- * @ORM\Table(name="trabgrado", indexes={@ORM\Index(name="FK_trabgrado_programas", columns={"id_programa"}), @ORM\Index(name="FK_trabgrado_clasificaciontg", columns={"id_clasificacion"})})
+ * @ORM\Table(name="trabgrado", indexes={@ORM\Index(name="FK_trabgrado_programas", columns={"id_programa"}), @ORM\Index(name="FK_trabgrado_clasificaciontg", columns={"id_clasificacion"}), @ORM\Index(name="FK_trabgrado_asesores", columns={"id_asesor"})})
  * @ORM\Entity
  */
 class Trabgrado
@@ -68,7 +68,17 @@ class Trabgrado
      *
      * @ORM\Column(name="estado", type="string", length=1, nullable=true)
      */
-    private $estado = '1';
+    private $estado;
+
+    /**
+     * @var \Asesores
+     *
+     * @ORM\ManyToOne(targetEntity="Asesores")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_asesor", referencedColumnName="id")
+     * })
+     */
+    private $idAsesor;
 
     /**
      * @var \Clasificaciontg
@@ -89,11 +99,6 @@ class Trabgrado
      * })
      */
     private $idPrograma;
-    
-    
-    public function __construct() {
-        $this->fechaRg = new \DateTime(date("Y-m-d H:i:s"));
-    }
 
 
 
@@ -269,6 +274,29 @@ class Trabgrado
     }
 
     /**
+     * Set idAsesor
+     *
+     * @param \TG\UdecBundle\Entity\Asesores $idAsesor
+     * @return Trabgrado
+     */
+    public function setIdAsesor(\TG\UdecBundle\Entity\Asesores $idAsesor = null)
+    {
+        $this->idAsesor = $idAsesor;
+
+        return $this;
+    }
+
+    /**
+     * Get idAsesor
+     *
+     * @return \TG\UdecBundle\Entity\Asesores 
+     */
+    public function getIdAsesor()
+    {
+        return $this->idAsesor;
+    }
+
+    /**
      * Set idClasificacion
      *
      * @param \TG\UdecBundle\Entity\Clasificaciontg $idClasificacion
@@ -313,11 +341,4 @@ class Trabgrado
     {
         return $this->idPrograma;
     }
-    
-    public function __toString(){
-        return $this->getTitulo();
-    }
-    
-    
-    
 }

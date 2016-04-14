@@ -8,7 +8,6 @@ use Doctrine\ORM\Mapping as ORM;
  * Clasificaciontg
  *
  * @ORM\Table(name="clasificaciontg")
- * @ORM\Table(name="clasificaciontg", indexes={@ORM\Index(name="FK_clasificaciontg_asesores", columns={"id_asesores"})})
  * @ORM\Entity
  */
 class Clasificaciontg
@@ -42,12 +41,6 @@ class Clasificaciontg
      * @ORM\Column(name="descripcion", type="string", length=250, nullable=true)
      */
     private $descripcion;
-	/**
-     * @var string
-     *
-     * @ORM\Column(name="Tit_Prof", type="string", length=50, nullable=true)
-     */
-   // private $TitProf;
 
     /**
      * @var string
@@ -61,17 +54,7 @@ class Clasificaciontg
      *
      * @ORM\Column(name="estado", type="string", length=1, nullable=true)
      */
-    private $estado = '1';
-    
-    /**
-     * @var \Asesores
-     *
-     * @ORM\ManyToOne(targetEntity="Asesores")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_asesores", referencedColumnName="id")
-     * })
-     */
-    //private $idAsesores;
+    private $estado;
 
 
 
@@ -199,31 +182,4 @@ class Clasificaciontg
     {
         return $this->estado;
     }
-    
-    public function __toString(){
-        return $this->getNombre();
-    }
-
-    /**
-     * Set idAsesores
-     *
-     * @param \TG\UdecBundle\Entity\Asesores $idAsesores
-     * @return Clasificaciontg
-     */
-    /*public function setIdAsesores(\TG\UdecBundle\Entity\Asesores $idAsesores = null)
-    {
-        $this->idAsesores = $idAsesores;
-
-        return $this;
-    }*/
-	
-    /**
-     * Get idAsesores
-     *
-     * @return \TG\UdecBundle\Entity\Asesores 
-     */
-    /*public function getIdAsesores()
-    {
-        return $this->idAsesores;
-    }*/
 }

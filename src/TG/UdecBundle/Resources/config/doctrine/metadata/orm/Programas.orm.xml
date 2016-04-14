@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Programas" table="programas">
+    <indexes>
+      <index name="FK_programas_sedes" columns="id_sede"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nombre" type="string" column="nombre" length="50" nullable="true"/>
+    <field name="facultad" type="string" column="facultad" length="50" nullable="true"/>
+    <field name="estado" type="string" column="estado" length="1" nullable="true"/>
+    <many-to-one field="idSede" target-entity="Sedes">
+      <join-columns>
+        <join-column name="id_sede" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

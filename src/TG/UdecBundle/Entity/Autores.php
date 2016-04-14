@@ -26,7 +26,7 @@ class Autores
      *
      * @ORM\Column(name="estado", type="string", length=1, nullable=true)
      */
-    private $estado = '1';
+    private $estado;
 
     /**
      * @var \Personas
@@ -99,7 +99,7 @@ class Autores
     /**
      * Get idPersona
      *
-     * @return \Acme\DemoBundle\Entity\Personas 
+     * @return \TG\UdecBundle\Entity\Personas 
      */
     public function getIdPersona()
     {

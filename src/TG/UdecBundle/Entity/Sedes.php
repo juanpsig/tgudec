@@ -54,7 +54,7 @@ class Sedes
      *
      * @ORM\Column(name="estado", type="string", length=1, nullable=true)
      */
-    private $estado = '1';
+    private $estado;
 
 
 
@@ -181,9 +181,5 @@ class Sedes
     public function getEstado()
     {
         return $this->estado;
-    }
-    
-    public function __toString(){
-        return $this->getNombre();
     }
 }

@@ -1,7 +1,5 @@
 <?php
 
-// src\TG\UdecBundle\Entity\Archivostg.php
-
 namespace TG\UdecBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -84,7 +82,7 @@ class Archivostg
      *
      * @ORM\Column(name="estado", type="string", length=1, nullable=true)
      */
-    private $estado = '1';
+    private $estado;
 
     /**
      * @var \Trabgrado
@@ -336,9 +334,5 @@ class Archivostg
     public function getIdTrabajo()
     {
         return $this->idTrabajo;
-    }
-    
-    public function __toString(){
-        return $this->getDoc();
     }
 }

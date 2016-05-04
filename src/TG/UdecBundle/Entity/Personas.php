@@ -362,4 +362,12 @@ class Personas
     {
         return $this->estado;
     }
+    
+    public function getNombre(){
+        return $this->primerNombre.' '.$this->segundoNombre.' '.$this->primerApellido.' '.$this->segundoApellido;
+    }
+    
+    public function __toString(){
+        return $this->getNombre();
+    }
 }

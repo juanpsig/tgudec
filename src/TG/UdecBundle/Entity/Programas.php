@@ -155,4 +155,8 @@ class Programas
     {
         return $this->idSede;
     }
+    
+    public function __toString(){
+        return $this->getNombre();
+    }
 }

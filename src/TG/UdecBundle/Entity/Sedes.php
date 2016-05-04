@@ -182,4 +182,8 @@ class Sedes
     {
         return $this->estado;
     }
+    
+     public function __toString(){
+        return $this->getNombre();
+    }
 }
